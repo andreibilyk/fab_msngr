@@ -72,16 +72,16 @@ def send_message(recipient_id, message_text):
       "type":"template",
       "payload":{
         "template_type":"button",
-        "text":"What do you want to do next?",
+        "text":"Привіт! Мене звати Правовик! :)",
         "buttons":[
           {
             "type":"web_url",
-            "url":"https://petersapparel.parseapp.com",
-            "title":"Show Website"
+            "url":"http://pravovyk.com",
+            "title":"Перейти на сайт"
           },
           {
             "type":"postback",
-            "title":"Start Chatting",
+            "title":"Розпочати чат",
             "payload":"USER_DEFINED_PAYLOAD"
           }
         ]
