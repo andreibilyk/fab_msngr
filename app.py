@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 import os
 import sys
 import json
@@ -72,7 +73,7 @@ def send_message(recipient_id, message_text):
       "type":"template",
       "payload":{
         "template_type":"button",
-        "text":"Привіт! Мене звати Правовик! :)",
+        "text":"Привіт! Мене звати Правовик!",
         "buttons":[
           {
             "type":"web_url",
