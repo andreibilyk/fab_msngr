@@ -70,12 +70,20 @@ def send_message(recipient_id, message_text):
         "message": {
             "text": message_text
         },
-        "buttons":[
-      {
-        "type":"postback",
-        "title":"Bookmark Item",
-        "payload":"DEVELOPER_DEFINED_PAYLOAD"
-      }]
+        'attachment': {
+         'type': 'template',
+         'payload': {
+          'template_type': 'button',
+          'text': 'This is the description',
+          'buttons': [
+                      {
+                       'type': 'postback',
+                       'title': 'This is the visible text',
+                       'payload': 'This is the value you get back'
+                      }
+                     ]
+                      }
+                      }
     })
     r = requests.post("https://graph.facebook.com/v2.6/me/messages", params=params, headers=headers, data=data)
     if r.status_code != 200:
