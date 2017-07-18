@@ -44,7 +44,7 @@ class SQLighter:
               data["message"]["attachment"]["payload"]["elements"].append(
               {
                 "title":item,
-                "image_url":urls[str(i)],
+                "image_url":"https://andreibilyk.com/police.jpg",
                 "subtitle":answers,
                 "buttons":[{
                               "type":"postback",
@@ -54,6 +54,7 @@ class SQLighter:
                                             ]
                                           }
               )
+              print(i)
               i += 1
              except BaseException:
               pass
