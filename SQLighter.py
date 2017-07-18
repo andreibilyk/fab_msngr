@@ -31,6 +31,7 @@ class SQLighter:
                             }
                             }
                             }
+        i = 1
          for item in list_items:
              try:
               self.cursor.execute('SELECT * FROM user_interac WHERE user_answer = %s'% "'"+item+"'")
@@ -43,11 +44,16 @@ class SQLighter:
                 "buttons":[{
                               "type":"postback",
                             "title":"Обрати сферу",
-                            "payload":item
+                            "payload":i
                                               }
                                             ]
                                           }
               )
+              i += 1
              except BaseException:
               pass
          return data
+    def select_row(self,answer):
+                with self.connection:
+                    self.cursor.execute('SELECT * FROM user_interac WHERE user_answer = %s '% answer)
+                    return self.cursor.fetchall()[0]
