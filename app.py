@@ -38,7 +38,7 @@ def webhook():
 
                     sender_id = messaging_event["sender"]["id"]        # the facebook ID of the person sending you the message
                     recipient_id = messaging_event["recipient"]["id"]  # the recipient's ID, which should be your page's facebook ID
-                    #message_text = messaging_event["message"]["text"]  # the message's text
+                    message_text = messaging_event["message"]["text"]  # the message's text
 
                     send_message(sender_id, "roger that!")
 
@@ -68,39 +68,9 @@ def send_message(recipient_id, message_text):
         "recipient": {
             "id": recipient_id
         },
-          "message":{
-    "attachment":{
-      "type":"template",
-      "payload":{
-        "template_type":"generic",
-        "elements":[
-           {
-            "title":"Welcome to Peter\'s Hats",
-            "image_url":"https://www.w3schools.com/css/img_fjords.jpg",
-            "subtitle":"We\'ve got the right hat for everyone.",
-            "default_action": {
-              "type": "web_url",
-              "url": "https://peterssendreceiveapp.ngrok.io/view?item=103",
-              "messenger_extensions": true,
-              "webview_height_ratio": "tall",
-              "fallback_url": "https://peterssendreceiveapp.ngrok.io/"
-            },
-            "buttons":[
-              {
-                "type":"web_url",
-                "url":"https://petersfancybrownhats.com",
-                "title":"View Website"
-              },{
-                "type":"postback",
-                "title":"Start Chatting",
-                "payload":"DEVELOPER_DEFINED_PAYLOAD"
-              }
-            ]
-          }
-        ]
-      }
-    }
-  }
+        "message": {
+            "text": message_text
+        }
     })
     r = requests.post("https://graph.facebook.com/v2.6/me/messages", params=params, headers=headers, data=data)
     if r.status_code != 200:
