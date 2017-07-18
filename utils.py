@@ -22,7 +22,14 @@ def generate_markup(answers,callback,recipient_id):
             "template_type": "list",
             "elements": [
 
-                        ]
+                        ],
+                                 "buttons": [
+                {
+                    "title": "Більше",
+                    "type": "postback",
+                    "payload": "payload"
+                }
+            ]
         }
     }
 }
@@ -59,7 +66,22 @@ def generate_markup(answers,callback,recipient_id):
         if i == 4:
          return data
         if (len(callback + str(i)) <= 2) or (callback + str(i) == '111') or (callback + str(i) == '112') or (callback + str(i) == '113') or (callback + str(i) == '264'):
-         data["message"]["attachment"]["payload"]["elements"].append(
+         if i == 1:
+          data["message"]["attachment"]["payload"]["elements"].append(
+                                   {
+                                       "title": item,
+                                       "image_url": "https://andreibilyk.com/family.jpg",
+                                       "buttons": [
+                                           {
+                                               "title": "Переглянути",
+                                               "type": "postback",
+                                               "payload":callback + str(i)
+                                           }
+                                       ]
+                                   }
+                   )
+         else:
+          data["message"]["attachment"]["payload"]["elements"].append(
                          {
                              "title": item,
                              "buttons": [
@@ -70,7 +92,7 @@ def generate_markup(answers,callback,recipient_id):
                                  }
                              ]
                          }
-         )
+          )
         else:
          data["elements"].append(
                                    {
