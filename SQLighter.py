@@ -8,11 +8,11 @@ class SQLighter:
   "3":"https://andreibilyk.com/consumer.jpg",
   "4":"https://andreibilyk.com/police.jpg",
  }
-    def __init__(self):
+ def __init__(self):
         self.connection = psycopg2.connect("dbname='d43gotq6lmbhn3' user='viqqyucuojusmv' host='ec2-54-83-205-71.compute-1.amazonaws.com' password='cc1458772d0f7f750214b407228469a6c6f009d1bff544a0837cbc2771eee540'")
         self.cursor = self.connection.cursor()
 
-    def select_main(self):
+ def select_main(self):
         with self.connection:
          self.cursor.execute('SELECT * FROM user_interac WHERE id = 1')
          answers = (self.cursor.fetchall()[0])[2]
@@ -58,7 +58,7 @@ class SQLighter:
              except BaseException:
               pass
          return data
-    def select_row(self,answer):
+ def select_row(self,answer):
                 with self.connection:
                     self.cursor.execute('SELECT * FROM user_interac WHERE user_answer = %s '% answer)
                     return self.cursor.fetchall()[0]
