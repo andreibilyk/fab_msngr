@@ -16,7 +16,11 @@ class SQLighter:
          for item in answers.split(','):
             list_items.append(item)
          for item in list_items:
-             self.cursor.execute('SELECT * FROM user_interac WHERE user_answer = %s'% "'"+item+"'")
-             answers = (self.cursor.fetchall()[0])[2]
-             print(answers)
+             try:
+              self.cursor.execute('SELECT * FROM user_interac WHERE user_answer = %s'% "'"+item+"'")
+              answers = (self.cursor.fetchall()[0])[2]
+              print(answers)
+             except BaseException:
+              pass
+
          return
