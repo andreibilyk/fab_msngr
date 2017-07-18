@@ -3,10 +3,10 @@ import psycopg2
 import logging
 class SQLighter:
  urls = {
-  1:"https://andreibilyk.com/family.jpg"
-  2:"https://andreibilyk.com/business.jpg"
-  3:"https://andreibilyk.com/consumer.jpg"
-  4:"https://andreibilyk.com/police.jpg"
+  "1":"https://andreibilyk.com/family.jpg"
+  "2":"https://andreibilyk.com/business.jpg"
+  "3":"https://andreibilyk.com/consumer.jpg"
+  "4":"https://andreibilyk.com/police.jpg"
  }
     def __init__(self):
         self.connection = psycopg2.connect("dbname='d43gotq6lmbhn3' user='viqqyucuojusmv' host='ec2-54-83-205-71.compute-1.amazonaws.com' password='cc1458772d0f7f750214b407228469a6c6f009d1bff544a0837cbc2771eee540'")
@@ -44,7 +44,7 @@ class SQLighter:
               data["message"]["attachment"]["payload"]["elements"].append(
               {
                 "title":item,
-                "image_url":urls[i],
+                "image_url":urls[str(i)],
                 "subtitle":answers,
                 "buttons":[{
                               "type":"postback",
