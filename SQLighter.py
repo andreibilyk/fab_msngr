@@ -25,7 +25,7 @@ class SQLighter:
                         "payload":{
                           "template_type":"generic",
                           "elements":[
-                             
+
                             ]
                             }
                             }
@@ -40,12 +40,7 @@ class SQLighter:
                 "title":item,
                 "image_url":"https://andreibilyk.com/family.jpg",
                 "subtitle":answers,
-                "buttons":[
-                           {
-                            "type":"web_url",
-                            "url":"https://www.w3schools.com",
-                            "title":"View Website"
-                            },{
+                "buttons":[{
                               "type":"postback",
                             "title":"Обрати сферу",
                             "payload":"DEVELOPER_DEFINED_PAYLOAD"
