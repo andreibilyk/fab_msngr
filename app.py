@@ -5,11 +5,45 @@ import json
 import requests
 from flask import Flask, request
 from SQLighter import SQLighter
+import utils
 
 app = Flask(__name__)
 
 db_worker = SQLighter()
-
+network = {"1": "Сімейне право👨‍👩‍👧‍👦",
+"11": 'Аліменти💰',
+"111": 'Розмір аліментів🤓📊',
+"112":'Заборгованість по аліментам😡⏳',
+"113": 'Звільнення від сплати🤔',
+"12":'Права батьків після розлучення👨‍👦👩‍👦',
+"13":'Розлучення💔🙇🏼',
+"14": 'Поділ майна🔪',
+"15": 'Усиновлення👼🏼',
+"16": 'Заповіт📜',
+"17": 'Спадок🔗',
+"2": 'Трудове право💳',
+"21": 'Трудовий договір📄',
+"22": 'Звільнення😔',
+"23": 'Відпустка🏖',
+"24": 'Відрядження🚊✈️',
+"25": 'Праця неповнолітніх👶🏼',
+"26": 'Лікарняний🏥👩🏼‍⚕️',
+"264": 'Виплати💰',
+"27": 'Випробування🔮',
+"3": 'Право споживача🍞💇🏼‍♂️',
+'31':'Права споживача📊💇🏼‍♂️',
+'32':'Гарантія⚙️',
+'33':'Виявлення недоліків🔬',
+'34':'Заміна товару💰🛍',
+'35':'Інтернет-магазин🖥',
+'4':'Поліція👮🏼🚨',
+'41':'Права поліцейських👮🏻‍♀️',
+'42':'Пред’явлення посвідчення🙌🏻',
+'43':'Стан сп’яніння🍸🚙',
+'44':'Складання протоколу🖌👮🏼',
+'45':'Штраф💰',
+'46':'ДТП🚗',
+}
 @app.route('/', methods=['GET'])
 def verify():
     # when the endpoint is registered as a webhook, it must echo back
@@ -33,6 +67,10 @@ def webhook():
             for messaging_event in entry["messaging"]:
                 if messaging_event.get("postback"):
                  print(messaging_event["postback"]["payload"])
+                 if messaging_event["postback"]["payload"] in network:
+                     row = db_worker.select_row("'"+network.get(messaging_event["postback"]["payload"])+"'")
+                     data = utils.generate_markup(row[2],messaging_event["postback"]["payload"],messaging_event["recipient"]["id"])
+                     send_message(sender_id, data)
                 if messaging_event.get("message"):  # someone sent us a message
                     try:
                      sender_id = messaging_event["sender"]["id"]        # the facebook ID of the person sending you the message
@@ -40,7 +78,9 @@ def webhook():
                      message_text = messaging_event["message"]["text"]  # the message's text
                     except BaseException:
                      print('error')
-                    send_message(sender_id, "roger that!")
+                    data = db_worker.select_main()
+                    data["recipient"]["id"] = recipient_id
+                    send_message(sender_id, data)
 
                 if messaging_event.get("delivery"):  # delivery confirmation
                     pass
@@ -54,9 +94,7 @@ def webhook():
     return "ok", 200
 
 
-def send_message(recipient_id, message_text):
-
-    log("sending message to {recipient}: {text}".format(recipient=recipient_id, text=message_text))
+def send_message(recipient_id, data_to_send):
 
     params = {
         "access_token": os.environ["PAGE_ACCESS_TOKEN"]
@@ -64,169 +102,7 @@ def send_message(recipient_id, message_text):
     headers = {
         "Content-Type": "application/json"
     }
-    data = json.dumps({
-        "recipient": {
-            "id": recipient_id
-        },
-          "message":{
-    "attachment":{
-      "type":"template",
-      "payload":{
-        "template_type":"generic",
-        "elements":[
-           {
-            "title":"Сімейне право",
-            "image_url":"https://andreibilyk.com/family.jpg",
-            "subtitle":"Аліменти,права батьків 😀після розлучення,розлучення, поділ майна,jhjhhjjjhjhhjhjhjhjhj",
-            "buttons":[
-              {
-                "type":"web_url",
-                "url":"https://www.w3schools.com",
-                "title":"View Website"
-              },{
-                "type":"postback",
-                "title":"Start Chatting",
-                "payload":"DEVELOPER_DEFINED_PAYLOAD"
-              }
-            ]
-          },
-          {
-           "title":"Welcome to Peter\'s Hats",
-           "image_url":"https://www.w3schools.com/css/trolltunga.jpg",
-           "subtitle":"We\'ve got the right hat for everyone.",
-           "default_action": {
-             "type": "web_url",
-             "url": "https://www.w3schools.com",
-             "messenger_extensions": 'true',
-             "webview_height_ratio": "tall",
-             "fallback_url": "https://www.w3schools.com"
-           },
-           "buttons":[
-             {
-               "type":"web_url",
-               "url":"https://www.w3schools.com",
-               "title":"View Website"
-             },{
-               "type":"postback",
-               "title":"Start Chatting",
-               "payload":"DEVELOPER_DEFINED_PAYLOAD"
-             }
-           ]
-         }
-        ]
-      }
-    }
-  }
-    })
-    r = requests.post("https://graph.facebook.com/v2.6/me/messages", params=params, headers=headers, data=data)
-    if r.status_code != 200:
-        log(r.status_code)
-        log(r.text)
-    params = {
-        "access_token": os.environ["PAGE_ACCESS_TOKEN"]
-    }
-    headers = {
-        "Content-Type": "application/json"
-    }
-    data = json.dumps({
-        "recipient": {
-            "id": recipient_id
-        },
-          "message": {
-    "attachment": {
-        "type": "template",
-        "payload": {
-            "template_type": "list",
-            "elements": [
-                {
-                    "title": "Classic T-Shirt Collection",
-                    "image_url": "https://www.w3schools.com/css/trolltunga.jpg",
-                    "subtitle": "See all our colors",
-                    "buttons": [
-                        {
-                            "title": "View",
-                            "type": "postback",
-                            "payload":"s"
-                        }
-                    ]
-                },
-                {
-                    "title": "Classic White T-Shirt",
-                    "subtitle": "100% Cotton, 200% Comfortable",
-                    "buttons": [
-                        {
-                            "title": "Shop Now",
-                            "type": "postback",
-                            "payload":"s"
-                        }
-                    ]
-                },
-                {
-                            "title": "Classic Brown T-Shirt",
-                            "image_url": "https://andreibilyk.com/family.jpg",
-                            "subtitle": "100% Cotton, 200% Comfortable",
-                            "buttons": [
-                                {
-                                    "title": "Shop Now",
-                                    "type": "postback",
-                                    "payload":"s"
-                                }
-                            ]
-                        }
-                        ],
-
-
-             "buttons": [
-                {
-                    "title": "View More",
-                    "type": "postback",
-                    "payload": "payload"
-                }
-            ]
-        }
-    }
-}
-
-    })
-    r = requests.post("https://graph.facebook.com/v2.6/me/messages", params=params, headers=headers, data=data)
-    if r.status_code != 200:
-        log(r.status_code)
-        log(r.text)
-
-    params = {
-        "access_token": os.environ["PAGE_ACCESS_TOKEN"]
-    }
-    headers = {
-        "Content-Type": "application/json"
-    }
-    data = json.dumps({
-        "recipient": {
-            "id": recipient_id
-        },
-  "message":{
-    "text":"Pick a color:",
-    "quick_replies":[
-      {
-        "content_type":"text",
-        "title":"Red",
-        "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
-      },
-      {
-        "content_type":"text",
-        "title":"Green",
-        "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_GREEN"
-      }
-    ]
-  }
-    })
-    r = requests.post("https://graph.facebook.com/v2.6/me/messages", params=params, headers=headers, data=data)
-    if r.status_code != 200:
-        log(r.status_code)
-        log(r.text)
-
-    s = db_worker.select_main()
-    s["recipient"]["id"] = recipient_id
-    data = json.dumps(s)
+    data = json.dumps(data_to_send)
     r = requests.post("https://graph.facebook.com/v2.6/me/messages", params=params, headers=headers, data=data)
     if r.status_code != 200:
         log(r.status_code)
