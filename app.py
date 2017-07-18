@@ -69,8 +69,8 @@ def webhook():
                  print(messaging_event["postback"]["payload"])
                  if messaging_event["postback"]["payload"] in network:
                      row = db_worker.select_row("'"+network.get(messaging_event["postback"]["payload"])+"'")
-                     data = utils.generate_markup(row[2],messaging_event["postback"]["payload"],messaging_event["recipient"]["id"])
-                     send_message(sender_id, data)
+                     data = utils.generate_markup(row[2],messaging_event["postback"]["payload"],messaging_event["sender"]["id"])
+                     send_message(messaging_event["sender"]["id"], data)
                 if messaging_event.get("message"):  # someone sent us a message
                     try:
                      sender_id = messaging_event["sender"]["id"]        # the facebook ID of the person sending you the message
