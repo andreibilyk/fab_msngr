@@ -31,7 +31,7 @@ class SQLighter:
                             }
                             }
                             }
-        i = 1
+         i = 1
          for item in list_items:
              try:
               self.cursor.execute('SELECT * FROM user_interac WHERE user_answer = %s'% "'"+item+"'")
