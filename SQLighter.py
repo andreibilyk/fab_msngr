@@ -36,10 +36,14 @@ class SQLighter:
              try:
               self.cursor.execute('SELECT * FROM user_interac WHERE user_answer = %s'% "'"+item+"'")
               answers = (self.cursor.fetchall()[0])[2]
+              if i == 2:
+               url = "https://andreibilyk.com/family.jpg"
+              else:
+               url =  "https://andreibilyk.com/business.jpg"
               data["message"]["attachment"]["payload"]["elements"].append(
               {
                 "title":item,
-                "image_url":"https://andreibilyk.com/family.jpg",
+                "image_url":url,
                 "subtitle":answers,
                 "buttons":[{
                               "type":"postback",
