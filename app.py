@@ -94,9 +94,9 @@ def send_message(recipient_id, message_text):
         "template_type":"generic",
         "elements":[
            {
-            "title":"Welcome to Peter\'s Hats",
+            "title":"Сімейне право",
             "image_url":"https://andreibilyk.com/family.jpg",
-            "subtitle":"We\'ve got the right hat for everyone.",
+            "subtitle":"Аліменти,права батьків після розлучення,розлучення, поділ майна",
             "buttons":[
               {
                 "type":"web_url",
