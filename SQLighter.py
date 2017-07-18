@@ -17,7 +17,7 @@ class SQLighter:
             list_items.append(item)
                      data = {
                           "recipient": {
-                              "id": recipient_id
+                              "id":''
                           },
                             "message":{
                       "attachment":{
