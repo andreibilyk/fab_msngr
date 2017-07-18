@@ -88,7 +88,6 @@ def send_message(recipient_id, message_text):
             "id": recipient_id
         },
           "message":{
-    "text":'Оберіть сферу права',
     "attachment":{
       "type":"template",
       "payload":{
@@ -137,6 +136,77 @@ def send_message(recipient_id, message_text):
       }
     }
   }
+    })
+    r = requests.post("https://graph.facebook.com/v2.6/me/messages", params=params, headers=headers, data=data)
+    if r.status_code != 200:
+        log(r.status_code)
+        log(r.text)
+    params = {
+        "access_token": os.environ["PAGE_ACCESS_TOKEN"]
+    }
+    headers = {
+        "Content-Type": "application/json"
+    }
+    data = json.dumps({
+        "recipient": {
+            "id": recipient_id
+        },
+          "message": {
+    "attachment": {
+        "type": "template",
+        "payload": {
+            "template_type": "list",
+            "elements": [
+                {
+                    "title": "Classic T-Shirt Collection",
+                    "image_url": "https://www.w3schools.com/css/trolltunga.jpg",
+                    "subtitle": "See all our colors",
+                    "buttons": [
+                        {
+                            "title": "View",
+                            "type": "postback",
+                            "payload":"s"
+                        }
+                    ]
+                },
+                {
+                    "title": "Classic White T-Shirt",
+                    "image_url": "https://www.w3schools.com/css/trolltunga.jpg",
+                    "subtitle": "100% Cotton, 200% Comfortable",
+                    "buttons": [
+                        {
+                            "title": "Shop Now",
+                            "type": "postback",
+                            "payload":"s"
+                        }
+                    ]
+                },
+                {
+                            "title": "Classic Brown T-Shirt",
+                            "image_url": "https://andreibilyk.com/family.jpg",
+                            "subtitle": "100% Cotton, 200% Comfortable",
+                            "buttons": [
+                                {
+                                    "title": "Shop Now",
+                                    "type": "postback",
+                                    "payload":"s"
+                                }
+                            ]
+                        }
+                        ],
+
+
+             "buttons": [
+                {
+                    "title": "View More",
+                    "type": "postback",
+                    "payload": "payload"
+                }
+            ]
+        }
+    }
+}
+
     })
     r = requests.post("https://graph.facebook.com/v2.6/me/messages", params=params, headers=headers, data=data)
     if r.status_code != 200:
