@@ -88,6 +88,7 @@ def send_message(recipient_id, message_text):
             "id": recipient_id
         },
           "message":{
+    "text":'Оберіть сферу права',
     "attachment":{
       "type":"template",
       "payload":{
