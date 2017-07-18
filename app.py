@@ -42,7 +42,7 @@ def webhook():
                     except BaseException:
                      print('error')
 
-                    print(r.status_code)
+                    
                     send_message(sender_id, "roger that!")
 
                 if messaging_event.get("delivery"):  # delivery confirmation
