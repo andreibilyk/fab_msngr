@@ -88,9 +88,39 @@ def send_message(recipient_id, message_text):
         "recipient": {
             "id": recipient_id
         },
-         "message": {
-            "text": message_text
-        }
+          "message":{
+    "attachment":{
+      "type":"template",
+      "payload":{
+        "template_type":"generic",
+        "elements":[
+           {
+            "title":"Welcome to Peter\'s Hats",
+            "image_url":"https://www.w3schools.com/css/trolltunga.jpg",
+            "subtitle":"We\'ve got the right hat for everyone.",
+            "default_action": {
+              "type": "web_url",
+              "url": "https://www.w3schools.com",
+              "messenger_extensions": true,
+              "webview_height_ratio": "tall",
+              "fallback_url": "https://www.w3schools.com"
+            },
+            "buttons":[
+              {
+                "type":"web_url",
+                "url":"https://www.w3schools.com",
+                "title":"View Website"
+              },{
+                "type":"postback",
+                "title":"Start Chatting",
+                "payload":"DEVELOPER_DEFINED_PAYLOAD"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  }
     })
     r = requests.post("https://graph.facebook.com/v2.6/me/messages", params=params, headers=headers, data=data)
     if r.status_code != 200:
