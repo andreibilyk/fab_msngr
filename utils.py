@@ -69,7 +69,7 @@ def generate_markup(answers,callback,recipient_id):
     for item in list_items:
         i += 1
         if (len(callback + str(i)) <= 2) or (callback + str(i) == '111') or (callback + str(i) == '112') or (callback + str(i) == '113') or (callback + str(i) == '264'):
-         data["elements"].append(
+         data["message"]["attachment"]["payload"]["elements"].append(
                          {
                              "title": item,
                              "buttons": [
