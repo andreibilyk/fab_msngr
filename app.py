@@ -87,39 +87,9 @@ def send_message(recipient_id, message_text):
         "recipient": {
             "id": recipient_id
         },
-         "message":{
-    "attachment":{
-      "type":"template",
-      "payload":{
-        "template_type":"generic",
-        "elements":[
-           {
-            "title":"Welcome to Peter\'s Hats",
-            "image_url":"https://scontent-frx5-1.xx.fbcdn.net/v/t1.0-9/12046638_153621454981813_3324512307509885899_n.jpg?oh=eb051ee1383bd46d362545fc0ba668b7&oe=5A0F49BB",
-            "subtitle":"We\'ve got the right hat for everyone.",
-            "default_action": {
-              "type": "web_url",
-              "url": "https://pravovyk.com",
-              "messenger_extensions": "true",
-              "webview_height_ratio": "tall",
-              "fallback_url": "https://pravovyk.com"
-            },
-            "buttons":[
-              {
-                "type":"web_url",
-                "url":"https://petersfancybrownhats.com",
-                "title":"View Website"
-              },{
-                "type":"postback",
-                "title":"Start Chatting",
-                "payload":"DEVELOPER_DEFINED_PAYLOAD"
-              }
-            ]
-          }
-        ]
-      }
-    }
-  }
+         "message": {
+            "text": message_text
+        }
     })
     r = requests.post("https://graph.facebook.com/v2.6/me/messages", params=params, headers=headers, data=data)
     if r.status_code != 200:
