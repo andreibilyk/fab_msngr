@@ -40,7 +40,9 @@ class SQLighter:
          for item in list_items:
              try:
               self.cursor.execute('SELECT * FROM user_interac WHERE user_answer = %s'% "'"+item+"'")
+              print('here1')
               answers = (self.cursor.fetchall()[0])[2]
+              print('here2')
               data["message"]["attachment"]["payload"]["elements"].append(
               {
                 "title":item,
