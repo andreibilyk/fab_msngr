@@ -82,10 +82,10 @@ def send_message(recipient_id, message_text):
             "subtitle":"We\'ve got the right hat for everyone.",
             "default_action": {
               "type": "web_url",
-              "url": "http://pravovyk.com",
+              "url": "https://pravovyk.com",
               "messenger_extensions": "true",
               "webview_height_ratio": "tall",
-              "fallback_url": "http://pravovyk.com"
+              "fallback_url": "https://pravovyk.com"
             },
             "buttons":[
               {
