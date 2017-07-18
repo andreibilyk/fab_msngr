@@ -42,7 +42,7 @@ class SQLighter:
               self.cursor.execute('SELECT * FROM user_interac WHERE user_answer = %s'% "'"+item+"'")
               print('here1')
               answers = (self.cursor.fetchall()[0])[2]
-              print(urls[str(i)])
+              print(self.urls)
               data["message"]["attachment"]["payload"]["elements"].append(
               {
                 "title":item,
