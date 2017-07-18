@@ -15,7 +15,7 @@ class SQLighter:
          list_items = []
          for item in answers.split(','):
             list_items.append(item)
-                     data = {
+         data = {
                           "recipient": {
                               "id":''
                           },
