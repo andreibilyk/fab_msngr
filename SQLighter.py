@@ -59,6 +59,7 @@ class SQLighter:
               i += 1
              except BaseException:
               pass
+         print(data)
          return data
     def select_row(self,answer):
                 with self.connection:
