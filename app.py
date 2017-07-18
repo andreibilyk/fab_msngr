@@ -4,6 +4,7 @@ import sys
 import json
 import requests
 from flask import Flask, request
+from SQLighter import SQLighter
 
 app = Flask(__name__)
 
