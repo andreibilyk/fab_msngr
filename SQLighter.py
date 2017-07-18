@@ -43,7 +43,7 @@ class SQLighter:
                 "buttons":[{
                               "type":"postback",
                             "title":"Обрати сферу",
-                            "payload":"DEVELOPER_DEFINED_PAYLOAD"
+                            "payload":item
                                               }
                                             ]
                                           }

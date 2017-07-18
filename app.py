@@ -24,9 +24,6 @@ def verify():
 
 @app.route('/', methods=['POST'])
 def webhook():
-    payload = request.get_data()
-    print payload
-    print(request)
     # endpoint for processing incoming messaging events
     data = request.get_json()
     log(data)  # you may not want to log every incoming message in production, but it's good for testing
@@ -36,7 +33,6 @@ def webhook():
             for messaging_event in entry["messaging"]:
                 if messaging_event.get("postback"):
                  print(messaging_event["postback"]["payload"])
-                 send_message(sender_id, "roger that!")
                 if messaging_event.get("message"):  # someone sent us a message
                     try:
                      sender_id = messaging_event["sender"]["id"]        # the facebook ID of the person sending you the message
