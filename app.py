@@ -84,7 +84,7 @@ def send_message(recipient_id, message_text):
             "default_action": {
             "type":"postback",
             "payload":"DEVELOPER_DEFINED_PAYLOAD"
-            }
+            },
             "buttons":[
               {
                 "type":"web_url",
