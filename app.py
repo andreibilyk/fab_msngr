@@ -50,7 +50,8 @@ def webhook():
                       "setting_type": "domain_whitelisting",
                       "whitelisted_domains": [
                         "https://petersfancyapparel.com",
-                        "http://pravovyk.com"
+                        "http://pravovyk.com",
+                        "https://www.w3schools.com"
                       ],
                       "domain_action_type": "add"
                     })
