@@ -2,11 +2,28 @@
 import os
 import sys
 import json
-
 import requests
 from flask import Flask, request
 
 app = Flask(__name__)
+params = {
+}
+headers = {
+    "Content-Type": "application/json"
+}
+data = json.dumps({
+  "setting_type": "domain_whitelisting",
+  "whitelisted_domains": [
+    "https://petersfancyapparel.com",
+    "http://pravovyk.com"
+  ],
+  "domain_action_type": "add"
+})
+r = requests.post("https://graph.facebook.com/v2.6/me/thread_settings?access_token=EAAMtHsSYxe8BAAT7hMYsdPc6OZBPLYKSy6nAgY7NfDJVQNzBzWLyhYZBipsDFm1W1uxrA9LlZC09ZBzN5BQEwXCabn4VmG36SCj2EUbSK8N0QB8gcBf8kZApWDxndtQEmQpFtbatLeIZAiloIKQqnskXa7I8vzTgvdjIOD6chFGZAfw3qnxUuPVbE3w20bW3zsBMb2034TJwQZDZD", params=params, headers=headers, data=data)
+if r.status_code != 200:
+    print(r.status_code)
+    print(r.text)
+print(r.status_code)
 
 
 @app.route('/', methods=['GET'])
