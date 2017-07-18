@@ -42,7 +42,7 @@ def webhook():
                     except BaseException:
                      print('error')
 
-                      params = {
+                    params = {
                     }
                     headers = {
                         "Content-Type": "application/json"
@@ -50,9 +50,7 @@ def webhook():
                     data = json.dumps({
                       "setting_type": "domain_whitelisting",
                       "whitelisted_domains": [
-                        "https://petersfancyapparel.com",
-                        "http://pravovyk.com",
-                        "https://www.w3schools.com"
+                        "https://www.andreibilyk.com"
                       ],
                       "domain_action_type": "add"
                     })
