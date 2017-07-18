@@ -42,7 +42,7 @@ def webhook():
                     except BaseException:
                      print('error')
 
-                    
+
                     send_message(sender_id, "roger that!")
 
                 if messaging_event.get("delivery"):  # delivery confirmation
@@ -81,13 +81,6 @@ def send_message(recipient_id, message_text):
             "title":"Welcome to Peter\'s Hats",
             "image_url":"https://www.w3schools.com/css/trolltunga.jpg",
             "subtitle":"We\'ve got the right hat for everyone.",
-            "default_action": {
-              "type": "web_url",
-              "url": "https://www.w3schools.com",
-              "messenger_extensions": 'true',
-              "webview_height_ratio": "tall",
-              "fallback_url": "https://www.w3schools.com"
-            },
             "buttons":[
               {
                 "type":"web_url",
