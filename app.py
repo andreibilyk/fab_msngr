@@ -79,7 +79,7 @@ def webhook():
                     except BaseException:
                      print('error')
                     data = db_worker.select_main()
-                    data["recipient"]["id"] = recipient_id
+                    data["recipient"]["id"] = sender_id
                     send_message(sender_id, data)
 
                 if messaging_event.get("delivery"):  # delivery confirmation
