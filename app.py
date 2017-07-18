@@ -41,24 +41,7 @@ def webhook():
                      message_text = messaging_event["message"]["text"]  # the message's text
                     except BaseException:
                      print('error')
-                    params = {
-                    }
-                    headers = {
-                        "Content-Type": "application/json"
-                    }
-                    data = json.dumps({
-                      "setting_type": "domain_whitelisting",
-                      "whitelisted_domains": [
-                        "https://petersfancyapparel.com",
-                        "http://pravovyk.com",
-                        "https://www.w3schools.com"
-                      ],
-                      "domain_action_type": "add"
-                    })
-                    r = requests.post("https://graph.facebook.com/v2.6/me/thread_settings?access_token=EAAMtHsSYxe8BAAT7hMYsdPc6OZBPLYKSy6nAgY7NfDJVQNzBzWLyhYZBipsDFm1W1uxrA9LlZC09ZBzN5BQEwXCabn4VmG36SCj2EUbSK8N0QB8gcBf8kZApWDxndtQEmQpFtbatLeIZAiloIKQqnskXa7I8vzTgvdjIOD6chFGZAfw3qnxUuPVbE3w20bW3zsBMb2034TJwQZDZD", params=params, headers=headers, data=data)
-                    if r.status_code != 200:
-                        print(r.status_code)
-                        print(r.text)
+
                     print(r.status_code)
                     send_message(sender_id, "roger that!")
 
@@ -116,7 +99,30 @@ def send_message(recipient_id, message_text):
                 "payload":"DEVELOPER_DEFINED_PAYLOAD"
               }
             ]
-          }
+          },
+          {
+           "title":"Welcome to Peter\'s Hats",
+           "image_url":"https://www.w3schools.com/css/trolltunga.jpg",
+           "subtitle":"We\'ve got the right hat for everyone.",
+           "default_action": {
+             "type": "web_url",
+             "url": "https://www.w3schools.com",
+             "messenger_extensions": 'true',
+             "webview_height_ratio": "tall",
+             "fallback_url": "https://www.w3schools.com"
+           },
+           "buttons":[
+             {
+               "type":"web_url",
+               "url":"https://www.w3schools.com",
+               "title":"View Website"
+             },{
+               "type":"postback",
+               "title":"Start Chatting",
+               "payload":"DEVELOPER_DEFINED_PAYLOAD"
+             }
+           ]
+         }
         ]
       }
     }
