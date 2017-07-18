@@ -70,5 +70,4 @@ class SQLighter:
               )
              except BaseException:
               pass
-         print(data)
-         return
+         return data
