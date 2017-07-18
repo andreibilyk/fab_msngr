@@ -96,7 +96,7 @@ def send_message(recipient_id, message_text):
            {
             "title":"Сімейне право",
             "image_url":"https://andreibilyk.com/family.jpg",
-            "subtitle":"Аліменти,права батьків після розлучення,розлучення, поділ майна",
+            "subtitle":"Аліменти,права батьків після розлучення,розлучення, поділ майна,jhjhhjjjhjhhjhjhjhjhj",
             "buttons":[
               {
                 "type":"web_url",
