@@ -26,14 +26,14 @@ def verify():
 def webhook():
 
     # endpoint for processing incoming messaging events
-    print(request)
     data = request.get_json()
     log(data)  # you may not want to log every incoming message in production, but it's good for testing
     if data["object"] == "page":
 
         for entry in data["entry"]:
             for messaging_event in entry["messaging"]:
-
+                if messaging_event.get("postback"):
+                 print(messaging_event["postback"]["payload"])
                 if messaging_event.get("message"):  # someone sent us a message
                     try:
                      sender_id = messaging_event["sender"]["id"]        # the facebook ID of the person sending you the message
