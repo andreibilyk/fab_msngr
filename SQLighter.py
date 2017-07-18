@@ -9,10 +9,10 @@ class SQLighter:
 
     def select_main(self):
         with self.connection:
-        self.cursor.execute('SELECT * FROM user_interac WHERE id = 1')
-        answers = self.cursor.fetchall()[0]
-        print(answers[2])
-        list_items = []
-        for item in answers.split(','):
+         self.cursor.execute('SELECT * FROM user_interac WHERE id = 1')
+         answers = self.cursor.fetchall()[0]
+         print(answers[2])
+         list_items = []
+         for item in answers.split(','):
             list_items.append(item)
-        return
+         return
