@@ -25,22 +25,7 @@ class SQLighter:
                         "payload":{
                           "template_type":"generic",
                           "elements":[
-                             {
-                              "title":"Сімейне право",
-                              "image_url":"https://andreibilyk.com/family.jpg",
-                              "subtitle":"Аліменти,права батьків 😀після розлучення,розлучення, поділ майна,jhjhhjjjhjhhjhjhjhjhj",
-                              "buttons":[
-                                {
-                                  "type":"web_url",
-                                  "url":"https://www.w3schools.com",
-                                  "title":"View Website"
-                                },{
-                                  "type":"postback",
-                                  "title":"Start Chatting",
-                                  "payload":"DEVELOPER_DEFINED_PAYLOAD"
-                                }
-                              ]
-                            }
+                             
                             ]
                             }
                             }
