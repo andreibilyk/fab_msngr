@@ -81,6 +81,10 @@ def send_message(recipient_id, message_text):
             "title":"Welcome to Peter\'s Hats",
             "image_url":"https://www.w3schools.com/css/trolltunga.jpg",
             "subtitle":"We\'ve got the right hat for everyone.",
+            "default_action": {
+            "type":"postback",
+            "payload":"DEVELOPER_DEFINED_PAYLOAD"
+            }
             "buttons":[
               {
                 "type":"web_url",
