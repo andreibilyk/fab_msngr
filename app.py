@@ -101,7 +101,7 @@ def send_message(recipient_id, message_text):
             "default_action": {
               "type": "web_url",
               "url": "https://www.w3schools.com",
-              "messenger_extensions": true,
+              "messenger_extensions": 'true',
               "webview_height_ratio": "tall",
               "fallback_url": "https://www.w3schools.com"
             },
