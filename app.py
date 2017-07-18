@@ -78,14 +78,14 @@ def send_message(recipient_id, message_text):
         "elements":[
            {
             "title":"Welcome to Peter\'s Hats",
-            "image_url":"https://www.w3schools.com/css/img_fjords.jpg",
+            "image_url":"https://scontent-frx5-1.xx.fbcdn.net/v/t1.0-9/12046638_153621454981813_3324512307509885899_n.jpg?oh=eb051ee1383bd46d362545fc0ba668b7&oe=5A0F49BB",
             "subtitle":"We\'ve got the right hat for everyone.",
             "default_action": {
               "type": "web_url",
-              "url": "https://peterssendreceiveapp.ngrok.io/view?item=103",
+              "url": "http://pravovyk.com",
               "messenger_extensions": "true",
               "webview_height_ratio": "tall",
-              "fallback_url": "https://peterssendreceiveapp.ngrok.io/"
+              "fallback_url": "http://pravovyk.com"
             },
             "buttons":[
               {
