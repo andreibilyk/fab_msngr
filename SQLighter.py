@@ -15,12 +15,60 @@ class SQLighter:
          list_items = []
          for item in answers.split(','):
             list_items.append(item)
+                     data = {
+                          "recipient": {
+                              "id": recipient_id
+                          },
+                            "message":{
+                      "attachment":{
+                        "type":"template",
+                        "payload":{
+                          "template_type":"generic",
+                          "elements":[
+                             {
+                              "title":"Сімейне право",
+                              "image_url":"https://andreibilyk.com/family.jpg",
+                              "subtitle":"Аліменти,права батьків 😀після розлучення,розлучення, поділ майна,jhjhhjjjhjhhjhjhjhjhj",
+                              "buttons":[
+                                {
+                                  "type":"web_url",
+                                  "url":"https://www.w3schools.com",
+                                  "title":"View Website"
+                                },{
+                                  "type":"postback",
+                                  "title":"Start Chatting",
+                                  "payload":"DEVELOPER_DEFINED_PAYLOAD"
+                                }
+                              ]
+                            }
+                            ]
+                            }
+                            }
+                            }
+                            }
          for item in list_items:
              try:
               self.cursor.execute('SELECT * FROM user_interac WHERE user_answer = %s'% "'"+item+"'")
               answers = (self.cursor.fetchall()[0])[2]
-              print(answers)
+              data["message"]["attachment"]["payload"]["elements"].append(
+              {
+                "title":item,
+                "image_url":"https://andreibilyk.com/family.jpg",
+                "subtitle":answers,
+                "buttons":[
+                           {
+                            "type":"web_url",
+                            "url":"https://www.w3schools.com",
+                            "title":"View Website"
+                            },{
+                              "type":"postback",
+                            "title":"Обрати сферу",
+                            "payload":"DEVELOPER_DEFINED_PAYLOAD"
+                                              }
+                                            ]
+                                          }
+              )
              except BaseException:
               pass
-
+         print(data)
          return
