@@ -21,18 +21,6 @@ def generate_markup(answers,callback,recipient_id):
         "payload": {
             "template_type": "list",
             "elements": [
-                {
-                    "title": "Classic T-Shirt Collection",
-                    "image_url": "https://www.w3schools.com/css/trolltunga.jpg",
-                    "subtitle": "See all our colors",
-                    "buttons": [
-                        {
-                            "title": "View",
-                            "type": "postback",
-                            "payload":"s"
-                        }
-                    ]
-                }
 
                         ]
         }
