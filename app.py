@@ -171,7 +171,6 @@ def send_message(recipient_id, message_text):
                 },
                 {
                     "title": "Classic White T-Shirt",
-                    "image_url": "https://www.w3schools.com/css/trolltunga.jpg",
                     "subtitle": "100% Cotton, 200% Comfortable",
                     "buttons": [
                         {
