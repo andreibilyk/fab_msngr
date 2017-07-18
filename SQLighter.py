@@ -46,7 +46,7 @@ class SQLighter:
               data["message"]["attachment"]["payload"]["elements"].append(
               {
                 "title":item,
-                "image_url":urls[str(i)],
+                "image_url":"https://andreibilyk.com/family.jpg",
                 "subtitle":answers,
                 "buttons":[{
                               "type":"postback",
