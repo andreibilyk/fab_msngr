@@ -24,7 +24,6 @@ def generate_markup(answers,callback,recipient_id):
 {
     "title": "Сімейне право",
     "image_url": "https://andreibilyk.com/family.jpg",
-    ]
 }
                         ],
                                  "buttons": [
