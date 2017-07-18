@@ -22,7 +22,7 @@ def generate_markup(answers,callback,recipient_id):
             "template_type": "list",
             "elements": [
 {
-    "title": Сімейне право,
+    "title": "Сімейне право",
     "image_url": "https://andreibilyk.com/family.jpg",
     ]
 }
