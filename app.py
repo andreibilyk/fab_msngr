@@ -68,22 +68,34 @@ def send_message(recipient_id, message_text):
         "recipient": {
             "id": recipient_id
         },
-        "message":{
+          "message":{
     "attachment":{
       "type":"template",
       "payload":{
-        "template_type":"button",
-        "text":"Привіт! Мене звати Правовик!😃",
-        "buttons":[
-          {
-            "type":"web_url",
-            "url":"http://pravovyk.com",
-            "title":"Перейти на сайт"
-          },
-          {
-            "type":"postback",
-            "title":"Розпочати чат",
-            "payload":"USER_DEFINED_PAYLOAD"
+        "template_type":"generic",
+        "elements":[
+           {
+            "title":"Welcome to Peter\'s Hats",
+            "image_url":"https://www.w3schools.com/css/img_fjords.jpg",
+            "subtitle":"We\'ve got the right hat for everyone.",
+            "default_action": {
+              "type": "web_url",
+              "url": "https://peterssendreceiveapp.ngrok.io/view?item=103",
+              "messenger_extensions": true,
+              "webview_height_ratio": "tall",
+              "fallback_url": "https://peterssendreceiveapp.ngrok.io/"
+            },
+            "buttons":[
+              {
+                "type":"web_url",
+                "url":"https://petersfancybrownhats.com",
+                "title":"View Website"
+              },{
+                "type":"postback",
+                "title":"Start Chatting",
+                "payload":"DEVELOPER_DEFINED_PAYLOAD"
+              }
+            ]
           }
         ]
       }
