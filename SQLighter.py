@@ -37,9 +37,9 @@ class SQLighter:
               self.cursor.execute('SELECT * FROM user_interac WHERE user_answer = %s'% "'"+item+"'")
               answers = (self.cursor.fetchall()[0])[2]
               if i == 2:
-               url = "https://andreibilyk.com/family.jpg"
+               url = "https://andreibilyk.com/business.jpg"
               else:
-               url =  "https://andreibilyk.com/business.jpg"
+               url =  "https://andreibilyk.com/family.jpg"
               data["message"]["attachment"]["payload"]["elements"].append(
               {
                 "title":item,
