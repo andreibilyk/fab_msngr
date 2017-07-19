@@ -94,7 +94,7 @@ def webhook():
                      if (messaging_event["message"]["quick_reply"]["payload"] == "0"):
                       data = db_worker.select_main()
                       data["recipient"]["id"] = messaging_event["sender"]["id"]
-                      send_message(sender_id, data)
+                      send_message(messaging_event["sender"]["id"], data)
                      else:
                       try:
                        code = messaging_event["message"]["quick_reply"]["payload"]
