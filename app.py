@@ -66,14 +66,13 @@ def webhook():
         for entry in data["entry"]:
             for messaging_event in entry["messaging"]:
                 if messaging_event.get("postback"):
-                 print(messaging_event["postback"]["payload"])
                  if messaging_event["postback"]["payload"] in network:
                      print((messaging_event["postback"]["payload"])[0])
                      if ((messaging_event["postback"]["payload"])[0] != "m"):
                       row = db_worker.select_row("'"+network.get(messaging_event["postback"]["payload"])+"'")
                       data = utils.generate_markup(row[2],messaging_event["postback"]["payload"],messaging_event["sender"]["id"])
                       send_message(messaging_event["sender"]["id"], data)
-                     elif ((messaging_event["postback"]["payload"])[0] == "m"):
+                     else:
                       print("here1")
                       try:
                        row = db_worker.select_row("'"+network.get((messaging_event["postback"]["payload"])[4:])+"'")
