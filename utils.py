@@ -70,6 +70,24 @@ def generate_markup(answers,callback,recipient_id):
     # Хорошенько перемешаем все элементы
     #random.shuffle(list_items)
     # Заполняем разметку перемешанными элементами
+
+    if len(list_items)>3:
+         data["message"]["attachment"]["payload"]["buttons"] = [
+    {
+    "title": "Більше",
+    "type": "postback",
+    "payload": "more"+callback
+    }
+    ]
+    if len(callback)<2:
+            print("quick")
+            data["message"]["quick_replies"] = [
+          {
+            "content_type":"text",
+            "title":"Головне меню",
+            "payload":"0"
+          }
+        ]
     i = 0
     for item in list_items:
         i += 1
@@ -117,23 +135,7 @@ def generate_markup(answers,callback,recipient_id):
                                    }
                    )
     print(len(list_items))
-    if len(list_items)>3:
-     data["message"]["attachment"]["payload"]["buttons"] = [
-{
-"title": "Більше",
-"type": "postback",
-"payload": "more"+callback
-}
-]
-    if len(callback)<2:
-        print("quick")
-        data["message"]["quick_replies"] = [
-      {
-        "content_type":"text",
-        "title":"Головне меню",
-        "payload":"0"
-      }
-    ]
+
     return data
 
 def generate_markup_more(answers,callback,recipient_id):
