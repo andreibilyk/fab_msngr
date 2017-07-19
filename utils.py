@@ -26,13 +26,7 @@ def generate_markup(answers,callback,recipient_id):
     "image_url": "https://andreibilyk.com/family.jpg",
 }
                         ],
-                                 "buttons": [
-                {
-                    "title": "Більше",
-                    "type": "postback",
-                    "payload": "payload"
-                }
-            ]
+
         }
     }
 }
@@ -109,4 +103,12 @@ def generate_markup(answers,callback,recipient_id):
                                        ]
                                    }
                    )
+        if len(list_items)>3:
+         data["message"]["attachment"]["payload"]["buttons"] = [
+{
+"title": "Більше",
+"type": "postback",
+"payload": "more"+callback
+}
+]
     return data

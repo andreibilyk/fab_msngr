@@ -68,6 +68,7 @@ def webhook():
                 if messaging_event.get("postback"):
                  print(messaging_event["postback"]["payload"])
                  if messaging_event["postback"]["payload"] in network:
+                     print(messaging_event["postback"]["payload"])
                      row = db_worker.select_row("'"+network.get(messaging_event["postback"]["payload"])+"'")
                      data = utils.generate_markup(row[2],messaging_event["postback"]["payload"],messaging_event["sender"]["id"])
                      send_message(messaging_event["sender"]["id"], data)
