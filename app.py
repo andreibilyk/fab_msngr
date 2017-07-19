@@ -72,14 +72,15 @@ def webhook():
                       row = db_worker.select_row("'"+network.get(messaging_event["postback"]["payload"])+"'")
                       data = utils.generate_markup(row[2],messaging_event["postback"]["payload"],messaging_event["sender"]["id"])
                       send_message(messaging_event["sender"]["id"], data)
-                     else:
-                      print("here1")
-                      try:
-                       row = db_worker.select_row("'"+network.get((messaging_event["postback"]["payload"])[4:])+"'")
-                       data = utils.generate_markup_more(row[2],(messaging_event["postback"]["payload"])[4:],messaging_event["sender"]["id"])
-                       send_message(messaging_event["sender"]["id"], data)
-                      except BaseException as e :
-                       print(str(e))
+                 else:
+                  if ((messaging_event["postback"]["payload"])[0] == "m"):
+                   print("here1")
+                   try:
+                    row = db_worker.select_row("'"+network.get((messaging_event["postback"]["payload"])[4:])+"'")
+                    data = utils.generate_markup_more(row[2],(messaging_event["postback"]["payload"])[4:],messaging_event["sender"]["id"])
+                    send_message(messaging_event["sender"]["id"], data)
+                   except BaseException as e :
+                    print(str(e))
                 if messaging_event.get("message"):  # someone sent us a message
                     try:
                      sender_id = messaging_event["sender"]["id"]        # the facebook ID of the person sending you the message
