@@ -6,6 +6,7 @@ import requests
 from flask import Flask, request
 from SQLighter import SQLighter
 import utils
+import re
 
 app = Flask(__name__)
 
@@ -87,6 +88,7 @@ def webhook():
                     print(messaging_event["postback"]["payload"].encode('utf-8'))
                     row[1] = re.sub(['<b>', '', row[1])
                     row[1] = re.sub(['</b>', '', row[1])
+                    print(row[1])
                     data = utils.generate_answer(row[1],messaging_event["sender"]["id"])
                     send_message(messaging_event["sender"]["id"], data)
                 if messaging_event.get("message"):  # someone sent us a message
