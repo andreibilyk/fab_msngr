@@ -92,6 +92,9 @@ def webhook():
                     data = utils.generate_answer(answer,messaging_event["sender"]["id"])
                     send_message(messaging_event["sender"]["id"], data)
                 if messaging_event.get("message"):  # someone sent us a message
+                    if messaging_event["message"]["quick_reply"]:
+                        print("quick")
+                        return
                     try:
                      sender_id = messaging_event["sender"]["id"]        # the facebook ID of the person sending you the message
                      recipient_id = messaging_event["recipient"]["id"]  # the recipient's ID, which should be your page's facebook ID
