@@ -97,7 +97,7 @@ def generate_markup(answers,callback,recipient_id):
                          }
           )
         else:
-         data["elements"].append(
+         data["message"]["attachment"]["payload"]["elements"].append(
                                    {
                                        "title": item,
                                        "buttons": [
