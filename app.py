@@ -89,7 +89,7 @@ def webhook():
                     data = utils.generate_answer(answer,messaging_event["sender"]["id"])
                     send_message(messaging_event["sender"]["id"], data)
                 if messaging_event.get("message"):  # someone sent us a message
-                    if messaging_event["message"]["quick_reply"]:
+                    if (messaging_event.get("message")).get("quick_reply"):
                      print("quick")
                      if (messaging_event["message"]["quick_reply"]["payload"] == 0):
                       data = db_worker.select_main()
