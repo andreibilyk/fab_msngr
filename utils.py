@@ -112,6 +112,14 @@ def generate_markup(answers,callback,recipient_id):
 "payload": "more"+callback
 }
 ]
+    if len(callback)<2:
+        data["message"]["quick_replies"] = [
+      {
+        "content_type":"text",
+        "title":"Головне меню",
+        "payload":"0"
+      }
+    ]
     return data
 
 def generate_markup_more(answers,callback,recipient_id):
