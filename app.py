@@ -73,6 +73,7 @@ def webhook():
                       data = utils.generate_markup(row[2],messaging_event["postback"]["payload"],messaging_event["sender"]["id"])
                       send_message(messaging_event["sender"]["id"], data)
                      elif ((messaging_event["postback"]["payload"])[0] == "m"):
+                      print("here1")
                       try:
                        row = db_worker.select_row("'"+network.get((messaging_event["postback"]["payload"])[4:])+"'")
                        data = utils.generate_markup_more(row[2],(messaging_event["postback"]["payload"])[4:],messaging_event["sender"]["id"])
