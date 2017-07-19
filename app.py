@@ -82,7 +82,8 @@ def webhook():
                     print(str(e))
                   else:
                     print("answer is here")
-                    row = db_worker.select_row2("'"+messaging_event["postback"]["payload"]+"'")
+                    row = db_worker.select_row2("'"+messaging_event["postback"]["payload"].encode('utf-8')+"'")
+                    print(row)
                     print(messaging_event["postback"]["payload"].encode('utf-8'))
                     data = utils.generate_answer(row[0],messaging_event["sender"]["id"])
                     send_message(messaging_event["sender"]["id"], data)
