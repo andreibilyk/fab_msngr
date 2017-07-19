@@ -206,3 +206,14 @@ def generate_markup_more(answers,callback,recipient_id):
 }
 ]
     return data
+
+def generate_answer(answer,recipient_id):
+ data = {
+        "recipient": {
+            "id": recipient_id
+        },
+        "message": {
+            "text": answer
+        }
+    }
+ return data

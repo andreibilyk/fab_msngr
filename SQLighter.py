@@ -64,3 +64,12 @@ class SQLighter:
                 with self.connection:
                     self.cursor.execute('SELECT * FROM user_interac WHERE user_answer = %s '% answer)
                     return self.cursor.fetchall()[0]
+
+    def select_row2(self,answer):
+            with self.connection:
+                try:
+                 self.cursor.execute('SELECT * FROM user_interac WHERE user_answer LIKE %s '% str(answer))
+                 return self.cursor.fetchall()[0]
+                except BaseException as e:
+                 print(str(e))
+                 return
