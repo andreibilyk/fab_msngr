@@ -85,7 +85,7 @@ def generate_markup(answers,callback,recipient_id):
           {
             "content_type":"text",
             "title":"Назад",
-            "payload":callback
+            "payload":callback[:-1]
           },
         ]
     i = 0
