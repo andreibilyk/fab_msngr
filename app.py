@@ -67,6 +67,7 @@ def webhook():
         for entry in data["entry"]:
             for messaging_event in entry["messaging"]:
                 if messaging_event.get("quick_reply"):
+                 print("quick_reply")
                  print(messaging_event["quick_reply"]["payload"])
                 if messaging_event.get("postback"):
                  if messaging_event["postback"]["payload"] in network:
