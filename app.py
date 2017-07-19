@@ -97,9 +97,10 @@ def webhook():
                       send_message(sender_id, data)
                      else:
                       try:
-                       print(messaging_event["message"]["quick_reply"]["payload"])
-                       row = db_worker.select_row("'"+network.get(messaging_event["message"]["quick_reply"]["payload"])+"'")
-                       data = utils.generate_markup(row[2],messaging_event["message"]["quick_reply"]["payload"],messaging_event["sender"]["id"])
+                       code = messaging_event["message"]["quick_reply"]["payload"]
+                       print(code)
+                       row = db_worker.select_row("'"+code+"'")
+                       data = utils.generate_markup(row[2],code,messaging_event["sender"]["id"])
                        send_message(messaging_event["sender"]["id"], data)
                       except BaseException as e :
                        print(str(e))
