@@ -82,15 +82,14 @@ def webhook():
                    except BaseException as e :
                     print(str(e))
                   else:
-                    print("answer is here")
                     row = db_worker.select_row2("'"+messaging_event["postback"]["payload"].encode('utf-8')+"'")
                     answer = row[1]
                     answer = re.sub('<b>', '', answer)
                     answer = re.sub('</b>', '', answer)
-                    print(answer)
                     data = utils.generate_answer(answer,messaging_event["sender"]["id"])
                     send_message(messaging_event["sender"]["id"], data)
                 if messaging_event.get("message"):  # someone sent us a message
+                    print("message")
                     try:
                      sender_id = messaging_event["sender"]["id"]        # the facebook ID of the person sending you the message
                      recipient_id = messaging_event["recipient"]["id"]  # the recipient's ID, which should be your page's facebook ID
