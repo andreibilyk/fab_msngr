@@ -116,14 +116,15 @@ def generate_markup(answers,callback,recipient_id):
                                        ]
                                    }
                    )
-        if len(list_items)>3:
-         data["message"]["attachment"]["payload"]["buttons"] = [
+    if len(list_items)>3:
+     data["message"]["attachment"]["payload"]["buttons"] = [
 {
 "title": "Більше",
 "type": "postback",
 "payload": "more"+callback
 }
 ]
+    print(len(callback))
     if len(callback)<2:
         print("quick")
         data["message"]["quick_replies"] = [
