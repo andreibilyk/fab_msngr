@@ -81,8 +81,9 @@ def webhook():
                    except BaseException as e :
                     print(str(e))
                   else:
+                    print("answer is here")
                     row = db_worker.select_row2("'"+messaging_event["postback"]["payload"]+"'")
-                    print(row)
+                    print(messaging_event["postback"]["payload"])
                     data = utils.generate_answer(row[0],messaging_event["sender"]["id"])
                     send_message(messaging_event["sender"]["id"], data)
                 if messaging_event.get("message"):  # someone sent us a message
