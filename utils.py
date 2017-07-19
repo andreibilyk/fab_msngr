@@ -46,19 +46,7 @@ def generate_markup(answers,callback,recipient_id):
                         ],
 
         }
-    },
-    "quick_replies":[
-      {
-        "content_type":"text",
-        "title":"Red",
-        "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
-      },
-      {
-        "content_type":"text",
-        "title":"Green",
-        "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_GREEN"
-      }
-    ]
+    }
 }
 
     }
@@ -72,7 +60,7 @@ def generate_markup(answers,callback,recipient_id):
     # Заполняем разметку перемешанными элементами
 
     if len(list_items)>3:
-         data["message"]["attachment"]["payload"]["buttons"] = [
+     data["message"]["attachment"]["payload"]["buttons"] = [
     {
     "title": "Більше",
     "type": "postback",
@@ -80,13 +68,25 @@ def generate_markup(answers,callback,recipient_id):
     }
     ]
     if len(callback)<2:
-            print("quick")
-            data["message"]["quick_replies"] = [
+     data["message"]["quick_replies"] = [
           {
             "content_type":"text",
             "title":"Головне меню",
             "payload":"0"
           }
+        ]
+    else:
+     data["message"]["quick_replies"] = [
+          {
+            "content_type":"text",
+            "title":"Головне меню",
+            "payload":"0"
+          },
+          {
+            "content_type":"text",
+            "title":"Назад",
+            "payload":callback
+          },
         ]
     i = 0
     for item in list_items:
