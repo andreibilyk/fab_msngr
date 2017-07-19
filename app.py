@@ -85,8 +85,8 @@ def webhook():
                     row = db_worker.select_row2("'"+messaging_event["postback"]["payload"].encode('utf-8')+"'")
                     print(row)
                     print(messaging_event["postback"]["payload"].encode('utf-8'))
-                    row[0] = re.sub(['<b>', '', row[0])
-                    row[0] = re.sub(['</b>', '', row[0])
+                    row[1] = re.sub(['<b>', '', row[1])
+                    row[1] = re.sub(['</b>', '', row[1])
                     data = utils.generate_answer(row[1],messaging_event["sender"]["id"])
                     send_message(messaging_event["sender"]["id"], data)
                 if messaging_event.get("message"):  # someone sent us a message
