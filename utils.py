@@ -73,7 +73,7 @@ def generate_markup(answers,callback,recipient_id):
           data["message"]["attachment"]["payload"]["elements"].append(
                                    {
                                        "title": item,
-                                       "image_url": "https://andreibilyk.com/family.jpg",
+                                       "image_url": "",
                                        "buttons": [
                                            {
                                                "title": "Переглянути",
