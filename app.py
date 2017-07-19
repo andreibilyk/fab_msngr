@@ -66,9 +66,6 @@ def webhook():
 
         for entry in data["entry"]:
             for messaging_event in entry["messaging"]:
-                if messaging_event.get("quick_reply"):
-                 print("quick_reply")
-                 print(messaging_event["quick_reply"]["payload"])
                 if messaging_event.get("postback"):
                  if messaging_event["postback"]["payload"] in network:
                      print((messaging_event["postback"]["payload"])[0])
@@ -93,14 +90,23 @@ def webhook():
                     send_message(messaging_event["sender"]["id"], data)
                 if messaging_event.get("message"):  # someone sent us a message
                     if messaging_event["message"]["quick_reply"]:
-                        print("quick")
-                        return
-                    try:
-                     sender_id = messaging_event["sender"]["id"]        # the facebook ID of the person sending you the message
-                     recipient_id = messaging_event["recipient"]["id"]  # the recipient's ID, which should be your page's facebook ID
-                     message_text = messaging_event["message"]["text"]  # the message's text
-                    except BaseException:
-                     print('error')
+                     print("quick")
+                     if (messaging_event["quick_reply"]["payload"] == 0):
+                      data = db_worker.select_main()
+                      data["recipient"]["id"] = messaging_event["sender"]["id"]
+                      send_message(sender_id, data)
+                     else:
+                      row = db_worker.select_row("'"+network.get(messaging_event["postback"]["payload"])+"'")
+                      data = utils.generate_markup(row[2],messaging_event["postback"]["payload"],messaging_event["sender"]["id"])
+                      send_message(messaging_event["sender"]["id"], data)
+                     return "ok", 200
+                    else:
+                     try:
+                      sender_id = messaging_event["sender"]["id"]        # the facebook ID of the person sending you the message
+                      recipient_id = messaging_event["recipient"]["id"]  # the recipient's ID, which should be your page's facebook ID
+                      message_text = messaging_event["message"]["text"]  # the message's text
+                     except BaseException:
+                      print('error')
                     data = db_worker.select_main()
                     data["recipient"]["id"] = sender_id
                     send_message(sender_id, data)
