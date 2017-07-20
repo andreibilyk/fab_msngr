@@ -89,7 +89,7 @@ def generate_markup(answers,callback,recipient_id,headline):
             "payload":callback[:-1]
           },
         ]
-    if heasline in urls:
+    if headline in urls:
      data["message"]["attachment"]["payload"]["elements"].append(
      {
          "title": headline,
