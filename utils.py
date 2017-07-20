@@ -72,7 +72,7 @@ def generate_markup(answers,callback,recipient_id,headline):
      data["message"]["quick_replies"] = [
           {
             "content_type":"text",
-            "title":"Перелік сферу",
+            "title":"Перелік сфер",
             "payload":"0"
           }
         ]
