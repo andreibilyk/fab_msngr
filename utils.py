@@ -44,10 +44,6 @@ def generate_markup(answers,callback,recipient_id,headline):
         "payload": {
             "template_type": "list",
             "elements": [
-{
-"title": 'zdsd',
-"image_url": urls.get(headline)
-}
                         ],
 
         }
@@ -93,7 +89,7 @@ def generate_markup(answers,callback,recipient_id,headline):
             "payload":callback[:-1]
           },
         ]
-     data["message"]["attachment"]["payload"]["elements"].append(
+    data["message"]["attachment"]["payload"]["elements"].append(
      {
          "title": headline,
          "image_url": urls.get(headline)
