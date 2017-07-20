@@ -71,13 +71,13 @@ def webhook():
                      print((messaging_event["postback"]["payload"])[0])
                      if ((messaging_event["postback"]["payload"])[0] != "m"):
                       row = db_worker.select_row("'"+network.get(messaging_event["postback"]["payload"])+"'")
-                      data = utils.generate_markup(row[2],messaging_event["postback"]["payload"],messaging_event["sender"]["id"])
+                      data = utils.generate_markup(row[2],messaging_event["postback"]["payload"],messaging_event["sender"]["id"],network.get(messaging_event["postback"]["payload"]))
                       send_message(messaging_event["sender"]["id"], data)
                  else:
                   if ((messaging_event["postback"]["payload"])[0] == "m"):
                    try:
                     row = db_worker.select_row("'"+network.get((messaging_event["postback"]["payload"])[4:])+"'")
-                    data = utils.generate_markup_more(row[2],(messaging_event["postback"]["payload"])[4:],messaging_event["sender"]["id"])
+                    data = utils.generate_markup_more(row[2],(messaging_event["postback"]["payload"])[4:],messaging_event["sender"]["id"],network.get((messaging_event["postback"]["payload"])[4:]))
                     send_message(messaging_event["sender"]["id"], data)
                    except BaseException as e :
                     print(str(e))
@@ -100,7 +100,7 @@ def webhook():
                        code = messaging_event["message"]["quick_reply"]["payload"]
                        print(code)
                        row = db_worker.select_row("'"+network.get(code)+"'")
-                       data = utils.generate_markup(row[2],code,messaging_event["sender"]["id"])
+                       data = utils.generate_markup(row[2],code,messaging_event["sender"]["id"],network.get(code))
                        send_message(messaging_event["sender"]["id"], data)
                       except BaseException as e :
                        print(str(e))

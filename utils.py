@@ -2,9 +2,14 @@
 import random
 import re
 
+urls = {
+  "Сімейне право👨‍👩‍👧‍👦":"https://andreibilyk.com/family.jpg",
+  "Трудове право💳":"https://andreibilyk.com/business.jpg",
+  "Право споживача🍞💇🏼‍♂️":"https://andreibilyk.com/consumer.jpg",
+  "Поліція👮🏼🚨":"https://andreibilyk.com/police.jpg"
+            }
 
-
-def generate_markup(answers,callback,recipient_id):
+def generate_markup(answers,callback,recipient_id,headline):
     """
     Создаем кастомную клавиатуру для выбора ответа
     :param right_answer: Правильный ответ
@@ -39,10 +44,7 @@ def generate_markup(answers,callback,recipient_id):
         "payload": {
             "template_type": "list",
             "elements": [
-{
-    "title": "Сімейне право",
-    "image_url": "https://andreibilyk.com/family.jpg",
-}
+
                         ],
 
         }
@@ -88,6 +90,12 @@ def generate_markup(answers,callback,recipient_id):
             "payload":callback[:-1]
           },
         ]
+     data["message"]["attachment"]["payload"]["elements"].append(
+     {
+         "title": headline,
+         "image_url": urls.get(headline)
+     }
+     )
     i = 0
     for item in list_items:
         i += 1
