@@ -77,7 +77,7 @@ def webhook():
                   if ((messaging_event["postback"]["payload"])[0] == "m"):
                    try:
                     row = db_worker.select_row("'"+network.get((messaging_event["postback"]["payload"])[4:])+"'")
-                    data = utils.generate_markup_more(row[2],(messaging_event["postback"]["payload"])[4:],messaging_event["sender"]["id"],network.get((messaging_event["postback"]["payload"])[4:]))
+                    data = utils.generate_markup_more(row[2],(messaging_event["postback"]["payload"])[4:],messaging_event["sender"]["id"])
                     send_message(messaging_event["sender"]["id"], data)
                    except BaseException as e :
                     print(str(e))
