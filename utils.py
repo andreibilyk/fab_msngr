@@ -96,7 +96,7 @@ def generate_markup(answers,callback,recipient_id,headline):
          "image_url": urls.get(headline)
      }
      )
-    print(urls.get(headline))
+    print(data["message"]["attachment"]["payload"]["elements"])
     i = 0
     for item in list_items:
         i += 1
