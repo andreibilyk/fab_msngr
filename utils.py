@@ -44,7 +44,10 @@ def generate_markup(answers,callback,recipient_id,headline):
         "payload": {
             "template_type": "list",
             "elements": [
-
+{
+"title": 'zdsd',
+"image_url": urls.get(headline)
+}
                         ],
 
         }
