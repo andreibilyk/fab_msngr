@@ -89,12 +89,15 @@ def generate_markup(answers,callback,recipient_id,headline):
             "payload":callback[:-1]
           },
         ]
-    data["message"]["attachment"]["payload"]["elements"].append(
+    if heasline in urls:
+     data["message"]["attachment"]["payload"]["elements"].append(
      {
          "title": headline,
          "image_url": urls.get(headline)
      }
      )
+    else:
+     data["message"]["attachment"]["payload"]["top_element_style"] = "compact"
     print(data["message"]["attachment"]["payload"]["elements"])
     i = 0
     for item in list_items:
