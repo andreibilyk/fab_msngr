@@ -6,7 +6,7 @@ class SQLighter:
   "1":"https://andreibilyk.com/family2.jpg",
   "2":"https://andreibilyk.com/business.jpg",
   "3":"https://andreibilyk.com/consumer.jpg",
-  "4":"https://andreibilyk.com/police.jpg"
+  "4":"https://andreibilyk.com/policia.jpg"
             }
     def __init__(self):
         self.connection = psycopg2.connect("dbname='d43gotq6lmbhn3' user='viqqyucuojusmv' host='ec2-54-83-205-71.compute-1.amazonaws.com' password='cc1458772d0f7f750214b407228469a6c6f009d1bff544a0837cbc2771eee540'")
