@@ -3,7 +3,7 @@ import psycopg2
 import logging
 class SQLighter:
     urls = {
-  "1":"https://andreibilyk.com/family_law.jpg",
+  "1":"https://andreibilyk.com/family.jpg",
   "2":"https://andreibilyk.com/business.jpg",
   "3":"https://andreibilyk.com/consumer.jpg",
   "4":"https://andreibilyk.com/police.jpg"
