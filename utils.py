@@ -106,6 +106,7 @@ def generate_markup(answers,callback,recipient_id,headline):
         if (i == 4 and urls.get(headline)) or (i == 5 and urls.get(headline) == None):
          return data
         if (len(callback + str(i)) <= 2) or (callback + str(i) == '111') or (callback + str(i) == '112') or (callback + str(i) == '113') or (callback + str(i) == '264') and (callback + str(i) != "31"):
+         print(item)
          data["message"]["attachment"]["payload"]["elements"].append(
                          {
                              "title": item,
