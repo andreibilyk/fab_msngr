@@ -232,6 +232,7 @@ def generate_markup_more(answers,callback,recipient_id):
                                        ]
                                    }
                    )
+        print(len(list_items))
         if len(list_items)>4:
          data["message"]["attachment"]["payload"]["buttons"] = [
 {
