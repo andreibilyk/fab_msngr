@@ -188,6 +188,27 @@ def generate_markup_more(answers,callback,recipient_id):
     # Хорошенько перемешаем все элементы
     #random.shuffle(list_items)
     # Заполняем разметку перемешанными элементами
+    if len(callback)<2:
+     data["message"]["quick_replies"] = [
+          {
+            "content_type":"text",
+            "title":"Перелік сфер",
+            "payload":"0"
+          }
+        ]
+    else:
+     data["message"]["quick_replies"] = [
+          {
+            "content_type":"text",
+            "title":"Перелік сфер",
+            "payload":"0"
+          },
+          {
+            "content_type":"text",
+            "title":"Назад",
+            "payload":callback[:-1]
+          },
+        ]
     list_items = list_items[3:]
     i = 3
     for item in list_items:
@@ -240,16 +261,4 @@ def generate_answer(answer,recipient_id):
             "text": answer
         }
     }
- data["message"]["quick_replies"] = [
-      {
-        "content_type":"text",
-        "title":"Перелік сфер",
-        "payload":"0"
-      },
-      {
-        "content_type":"text",
-        "title":"Назад",
-        "payload":callback[:-1]
-      },
-    ]
  return data
