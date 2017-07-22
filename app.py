@@ -58,6 +58,8 @@ def verify():
 
 @app.route('/', methods=['POST'])
 def webhook():
+    if "31" in network:
+     print("hey")
     # endpoint for processing incoming messaging events
     data = request.get_json()
     log(data)  # you may not want to log every incoming message in production, but it's good for testing
