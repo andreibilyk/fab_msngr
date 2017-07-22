@@ -3,10 +3,10 @@ import random
 import re
 
 urls = {
-  "Сімейне право👨‍👩‍👧‍👦":"https://andreibilyk.com/family.jpg",
+  "Сімейне право👨‍👩‍👧‍👦":"https://andreibilyk.com/simejnoje.jpg",
   "Трудове право💳":"https://andreibilyk.com/business.jpg",
   "Право споживача🍞💇🏼‍♂️":"https://andreibilyk.com/consumer.jpg",
-  "Поліція👮🏼🚨":"https://andreibilyk.com/police.jpg"
+  "Поліція👮🏼🚨":"https://andreibilyk.com/policia.jpg"
             }
 
 def generate_markup(answers,callback,recipient_id,headline):
