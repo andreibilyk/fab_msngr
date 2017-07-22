@@ -240,4 +240,16 @@ def generate_answer(answer,recipient_id):
             "text": answer
         }
     }
+ data["message"]["quick_replies"] = [
+      {
+        "content_type":"text",
+        "title":"Перелік сфер",
+        "payload":"0"
+      },
+      {
+        "content_type":"text",
+        "title":"Назад",
+        "payload":callback[:-1]
+      },
+    ]
  return data
