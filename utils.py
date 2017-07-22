@@ -253,6 +253,9 @@ def generate_markup_more(answers,callback,recipient_id):
     return data
 
 def generate_answer(answer,recipient_id):
+ answer = answer + '''
+Не знайшли відповідь?
+ '''
  data = {
         "recipient": {
             "id": recipient_id
@@ -261,4 +264,16 @@ def generate_answer(answer,recipient_id):
             "text": answer
         }
     }
+ data["message"]["quick_replies"] = [
+      {
+        "content_type":"text",
+        "title":"Підключити оператора",
+        "payload":"operator"
+      },
+      {
+        "content_type":"text",
+        "title":"Перелік сфер",
+        "payload":"0"
+      },
+    ]
  return data
