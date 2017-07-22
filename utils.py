@@ -104,9 +104,8 @@ def generate_markup(answers,callback,recipient_id,headline):
     for item in list_items:
         i += 1
         if (i == 4 and urls.get(headline)) or (i == 5 and urls.get(headline) == None):
-         print("return")
          return data
-        if (len(callback + str(i)) <= 2) or (callback + str(i) == '111') or (callback + str(i) == '112') or (callback + str(i) == '113') or (callback + str(i) == '264'):
+        if (len(callback + str(i)) <= 2) or (callback + str(i) == '111') or (callback + str(i) == '112') or (callback + str(i) == '113') or (callback + str(i) == '264') or (callback + str(i) == '31'):
          data["message"]["attachment"]["payload"]["elements"].append(
                          {
                              "title": item,
