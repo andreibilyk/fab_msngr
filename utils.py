@@ -16,6 +16,7 @@ def generate_markup(answers,callback,recipient_id,headline):
     :param wrong_answers: Набор неправильных ответов
     :return: Объект кастомной клавиатуры
     """
+    print(callback)
     emoji_pattern = re.compile("["
                 u"\U0001F600-\U0001F64F"  # emoticons
                 u"\U0001F300-\U0001F5FF"  # symbols & pictographs
@@ -106,6 +107,7 @@ def generate_markup(answers,callback,recipient_id,headline):
          return data
         if (len(callback + str(i)) <= 2) or (callback + str(i) == '111') or (callback + str(i) == '112') or (callback + str(i) == '113') or (callback + str(i) == '264'):
          if i == 1:
+          print("here1")
           data["message"]["attachment"]["payload"]["elements"].append(
                                    {
                                        "title": item,
@@ -133,6 +135,7 @@ def generate_markup(answers,callback,recipient_id,headline):
                          }
           )
         else:
+         print("here")
          data["message"]["attachment"]["payload"]["elements"].append(
                                    {
                                        "title": item,
