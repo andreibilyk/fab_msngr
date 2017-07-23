@@ -105,7 +105,7 @@ def webhook():
                        print(str(e))
                      return "ok", 200
                     else:
-                    print("оператор")
+                     print("оператор")
 
 
                 if messaging_event.get("delivery"):  # delivery confirmation
