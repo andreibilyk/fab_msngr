@@ -143,7 +143,7 @@ def log(message):  # simple wrapper for logging to stdout on heroku
 
 
 @app.route('/usersdel',methods=['GET', 'POST'])
-def user_delete():
+def usersdel():
  print("Heyyy")
  return render_template("hello.html")
 
