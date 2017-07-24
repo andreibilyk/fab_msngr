@@ -145,7 +145,7 @@ def log(message):  # simple wrapper for logging to stdout on heroku
 @app.route('/user_delete')
 def user_delete():
  print("Heyyy")
- return "ok", 404
+ return render_template("hello.html")
 
 if __name__ == '__main__':
     app.run(debug=True)
