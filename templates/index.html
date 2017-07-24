@@ -1,4 +1,5 @@
 <!doctype html>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
 <title>Hello from Flask</title>
 {% if users %}
   {% for item in users %}
@@ -11,6 +12,17 @@
       Last name: <input type="text" name="lname"><br>
       <button type="submit">Register </button>
   </form>
+  <script>
+  $(document).on("click","a",function(e){
+      $.ajax({
+      type: "POST",
+      data: "id=" + $(this).attr("id"),
+      url: "{{ url_for('usersdel') }}"
+      });
+  });
+  </script>
+  <a href="javascript:;" id="1"><div id="button">Like!</div></a>
+  <a href="javascript:;" id="2"><div id="button">Like!</div></a>
 {% else %}
   <h1>Наразі немає чатів!</h1>
 {% endif %}
