@@ -54,7 +54,7 @@ def verify():
         return request.args["hub.challenge"], 200
 
     #return "Hello world", 200
-     return "HTTP/1.0 200 OK\r\nContent-type:text/html;charset=utf8\r\n\r\n<html><body>test</body></html>"
+    return '''HTTP/1.0 200 OK\r\nContent-type:text/html;charset=utf8\r\n\r\n<html><body>test</body></html>'''
 
 
 @app.route('/', methods=['POST'])
