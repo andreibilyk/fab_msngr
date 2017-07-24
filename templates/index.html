@@ -6,7 +6,7 @@
     <li>{{ elem[0] }}</li>
    {% endfor %}
   {% endfor %}
-  <form class="{{ url_for('user_delete') }}" action="/user_delete" method="post">
+  <form action="{{ url_for('user_delete') }}" method="post" role="form">
       <button type="button">Register </button>
   </form>
 {% else %}
