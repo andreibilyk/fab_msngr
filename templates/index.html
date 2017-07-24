@@ -1,5 +1,9 @@
 <!doctype html>
+<head>
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+<script src="static/js/jquery-1.9.0.js"> </script>
+</head>
+<body>
 <title>Hello from Flask</title>
 {% if users %}
   {% for item in users %}
@@ -12,6 +16,25 @@
       Last name: <input type="text" name="lname"><br>
       <button type="submit">Register </button>
   </form>
+  <script>
+  $(function() {
+    $('button').click(function() {
+        var user = "andrei";
+        var pass = "pass";
+        $.ajax({
+            url: '/usersdel',
+            data: user,
+            type: 'POST',
+            success: function(response) {
+                console.log(response);
+            },
+            error: function(error) {
+                console.log(error);
+            }
+        });
+    });
+});
+</script>
   <script>
   $(document).on("click","a",function(e){
       $.ajax({
@@ -26,3 +49,4 @@
 {% else %}
   <h1>Наразі немає чатів!</h1>
 {% endif %}
+</body>
