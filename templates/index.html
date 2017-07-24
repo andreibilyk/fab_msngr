@@ -6,8 +6,10 @@
     <li>{{ elem[0] }}</li>
    {% endfor %}
   {% endfor %}
-  <form action="https://enigmatic-mesa-89892.herokuapp.com/usersdel" method="POST">
-      <button type="button">Register </button>
+  <form action="{{ url_for('usersdel') }}" method="POST">
+      First name: <input type="text" name="fname"><br>
+      Last name: <input type="text" name="lname"><br>
+      <button type="submit">Register </button>
   </form>
 {% else %}
   <h1>Наразі немає чатів!</h1>
