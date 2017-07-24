@@ -7,6 +7,7 @@ from flask import Flask, request
 from SQLighter import SQLighter
 import utils
 import re
+from flask import render_template
 
 app = Flask(__name__)
 
