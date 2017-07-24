@@ -6,7 +6,13 @@
     <li>{{ elem[0] }}</li>
    {% endfor %}
   {% endfor %}
-   <h1>Hello {{ name }}!</h1>
+  <form class="form-signin" action="/user_delete" method="post" role="form">
+      <h2 class="form-signin-heading">Please Sign Up </h2>
+      <input type="email" name="username" class="form-control" placeholder="Email address" required autofocus>
+      <input type="password" name="password" class="form-control" placeholder="Password" required>
+
+      <button class="btn btn-lg btn-primary btn-block" type="button">Register </button>
+  </form>
 {% else %}
   <h1>Наразі немає чатів!</h1>
 {% endif %}

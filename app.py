@@ -142,5 +142,10 @@ def log(message):  # simple wrapper for logging to stdout on heroku
     sys.stdout.flush()
 
 
+@app.route('/user_delete', methods=['POST'])
+def user_delete():
+ print("Heyyy")
+ return "ok", 200
+
 if __name__ == '__main__':
     app.run(debug=True)
