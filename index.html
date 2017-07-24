@@ -1,0 +1,12 @@
+<!doctype html>
+<title>Hello from Flask</title>
+{% if users %}
+  {% for item in users %}
+   {% for elem in users %}
+    <li>{{ elem[0] }}</li>
+   {% endfor %}
+  {% endfor %}
+   <h1>Hello {{ name }}!</h1>
+{% else %}
+  <h1>Наразі немає чатів!</h1>
+{% endif %}

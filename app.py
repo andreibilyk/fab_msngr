@@ -44,6 +44,7 @@ network = {"1": "Сімейне право👨‍👩‍👧‍👦",
 '45':'Штраф💰',
 '46':'ДТП🚗',
 }
+users = [["beautiful","sdsd"],["sds","sdsdsd"]]
 @app.route('/', methods=['GET'])
 def verify():
     # when the endpoint is registered as a webhook, it must echo back
@@ -54,7 +55,7 @@ def verify():
         return request.args["hub.challenge"], 200
 
     #return "Hello world", 200
-    return '''HTTP/1.0 200 OK\r\nContent-type:text/html;charset=utf8\r\n\r\n<html><body>test</body></html>'''
+    return render_template('index.html', users=users)
 
 
 @app.route('/', methods=['POST'])
