@@ -6,7 +6,8 @@
 <body>
   <script>
   $(function() {
-    $('button').click(function() {
+    $('#btn').click(function() {
+        alert("working")
         var user = "andrei";
         var pass = "pass";
         $.ajax({
@@ -33,7 +34,7 @@
   <form action="{{ url_for('usersdel') }}" method="POST">
       First name: <input type="text" name="fname"><br>
       Last name: <input type="text" name="lname"><br>
-      <button type="button">Register </button>
+      <button type="button" id = "btn">Register </button>
   </form>
 
   <script>
