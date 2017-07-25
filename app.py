@@ -76,6 +76,14 @@ def webhook():
                       data = utils.generate_markup(row[2],messaging_event["postback"]["payload"],messaging_event["sender"]["id"],network.get(messaging_event["postback"]["payload"]))
                       send_message(messaging_event["sender"]["id"], data)
                  else:
+                  if (messaging_event["postback"]["payload"] == "operator"):
+                   users.append([messaging_event["sender"]["id"]])
+                   params = {"fields":"first_name,last_name","access_token":os.environ["PAGE_ACCESS_TOKEN"]}
+                   r = request.get("https://graph.facebook.com/v2.6/"+messaging_event["sender"]["id"],params = params)
+                   print(r.url)
+                   if r.status_code != 200:
+                    log(r.status_code)
+                    log(r.text)
                   if ((messaging_event["postback"]["payload"])[0] == "m"):
                    try:
                     row = db_worker.select_row("'"+network.get((messaging_event["postback"]["payload"])[4:])+"'")
