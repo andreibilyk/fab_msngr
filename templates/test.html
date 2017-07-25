@@ -20,8 +20,8 @@
   {% if users %}
    <ul>
     {% for item in users %}
-     <li>
-         <ul class="hr" id ="{{ item[1] }}">
+     <li id ="{{ item[1] }}">
+         <ul class="hr">
          <li>{{ item[0] }}</li>
          <li><button value="{{ item[1] }}" >Закінчити діалог</button></li>
          </ul>
