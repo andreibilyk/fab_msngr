@@ -20,13 +20,10 @@
 <body>
   {% if users %}
    <ul>
-    {% for item in users %}
-     <li>
-         <ul class="hr">
-         <li>{{ item[0] }}</li>
-         <li><button type="submit" value="{{ item[1] }}" >Кнопка 1</button></li>
-         </ul>
-     </li>
+     {% for item in users %}
+      {% for elem in users %}
+       <li>{{ elem[0] }}</li>
+      {% endfor %}
      {% endfor %}
   </ul>
  {% else %}
