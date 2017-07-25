@@ -5,23 +5,8 @@
 </head>
 <body>
   <script>
-  $(function() {
-    $('#btn').click(function() {
-        alert("working")
-        var user = "andrei";
-        var pass = "pass";
-        $.ajax({
-            url: "{{ url_for('usersdel') }}",
-            data: {'q':'1'},
-            type: 'POST',
-            success: function(response) {
-                console.log(response);
-            },
-            error: function(error) {
-                console.log(error);
-            }
-        });
-    });
+    $('button').on('click', function() {
+    alert("touched")
 });
 </script>
 <title>Hello from Flask</title>
@@ -31,11 +16,10 @@
     <li>{{ elem[0] }}</li>
    {% endfor %}
   {% endfor %}
-  <form action="{{ url_for('usersdel') }}" method="POST">
       First name: <input type="text" name="fname"><br>
       Last name: <input type="text" name="lname"><br>
       <button type="button" id = "btn">Register </button>
-  </form>
+
 
   <script>
   $(document).on("click","a",function(e){
