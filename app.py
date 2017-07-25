@@ -45,7 +45,7 @@ network = {"1": "Сімейне право👨‍👩‍👧‍👦",
 '45':'Штраф💰',
 '46':'ДТП🚗',
 }
-users = [["Андрій Білик".decode('utf-8'),"12345"],["sds","sdsdsd"]]
+users = []
 @app.route('/', methods=['GET'])
 def verify():
     # when the endpoint is registered as a webhook, it must echo back
@@ -93,26 +93,28 @@ def webhook():
                 if messaging_event.get("message"):  # someone sent us a message
                     if (messaging_event.get("message")).get("quick_reply"):
                      print("quick")
-                     if (messaging_event["message"]["quick_reply"]["payload"] == "operator"):
-                      users.append([messaging_event["sender"]["id"]])
-                      params = {"fields":"first_name,last_name","access_token":os.environ["PAGE_ACCESS_TOKEN"]}
-                      r = requests.get("https://graph.facebook.com/v2.6/"+messaging_event["sender"]["id"],params = params)
-                      print(r.url)
-                      print(r.content)
-                      if r.status_code != 200:
-                       log(r.status_code)
-                       log(r.text)
                      if (messaging_event["message"]["quick_reply"]["payload"] == "0"):
                       data = db_worker.select_main()
                       data["recipient"]["id"] = messaging_event["sender"]["id"]
                       send_message(messaging_event["sender"]["id"], data)
                      else:
                       try:
-                       code = messaging_event["message"]["quick_reply"]["payload"]
-                       print(code)
-                       row = db_worker.select_row("'"+network.get(code)+"'")
-                       data = utils.generate_markup(row[2],code,messaging_event["sender"]["id"],network.get(code))
-                       send_message(messaging_event["sender"]["id"], data)
+                       if (messaging_event["message"]["quick_reply"]["payload"] == "operator"):
+                        params = {"fields":"first_name,last_name","access_token":os.environ["PAGE_ACCESS_TOKEN"]}
+                        r = requests.get("https://graph.facebook.com/v2.6/"+messaging_event["sender"]["id"],params = params)
+                        print(r.url)
+                        print(r.content)
+                        users.append([r.content["first_name"]+" "+r.content["last_name"],messaging_event["sender"]["id"]])
+                        print(users)
+                        if r.status_code != 200:
+                         log(r.status_code)
+                         log(r.text)
+                       else:
+                        code = messaging_event["message"]["quick_reply"]["payload"]
+                        print(code)
+                        row = db_worker.select_row("'"+network.get(code)+"'")
+                        data = utils.generate_markup(row[2],code,messaging_event["sender"]["id"],network.get(code))
+                        send_message(messaging_event["sender"]["id"], data)
                       except BaseException as e :
                        print(str(e))
                      return "ok", 200
