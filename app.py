@@ -56,7 +56,7 @@ def verify():
         return request.args["hub.challenge"], 200
 
     #return "Hello world", 200
-    return render_template('index.html', users=users)
+    return render_template('test.html', users=users)
 
 
 @app.route('/', methods=['POST'])
