@@ -5,8 +5,13 @@
 </head>
 <body>
   <script>
+  $(document).ready(function(){              // по окончанию загрузки страницы
+    $('#btn').click(function(){      // вешаем на клик по элементу с id = example-1
+        alert("touched");// загрузку HTML кода из файла example.html
+    })
+});
     $('button').on('click', function() {
-    alert("touched")
+    alert("ha")
 });
 </script>
 <title>Hello from Flask</title>
