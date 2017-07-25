@@ -98,7 +98,7 @@ def webhook():
                       params = {"fields":"last_name","access_token":os.environ["PAGE_ACCESS_TOKEN"]}
                       r = requests.get("https://graph.facebook.com/v2.6/"+messaging_event["sender"]["id"],params = params)
                       print(r.url)
-                      print(request.get_json())
+                      print(r.content)
                       if r.status_code != 200:
                        log(r.status_code)
                        log(r.text)
