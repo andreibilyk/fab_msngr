@@ -19,11 +19,16 @@
    body {
      background-color: #FBF4E8;
    }
+   .logo {
+     display: block;
+     margin-left: auto;
+     margin-right: auto
+   }
   </style>
   <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 </head>
 <body>
-  <img src="{{ url_for('static', filename='logo.png') }}">
+  <img class = "logo" src="{{ url_for('static', filename='logo.png') }}">
   <div id = "main">
   {% if users %}
    <ul>
