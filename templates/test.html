@@ -38,7 +38,7 @@ $( "button" ).click(function() {
   alert($( this ).attr("value"))
   $.ajax({
   type: "POST",
-  data: "id=" + $(this).attr("value"),
+  data: $(this).attr("value"),
   url: "{{ url_for('usersdel') }}"
   });
 });
