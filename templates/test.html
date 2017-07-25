@@ -33,6 +33,17 @@
       text-align: center;
       color:#474848;
    }
+   .del_btn{
+     background-color: #4CAF50; /* Green */
+     border: none;
+     color: white;
+     padding: 15px 32px;
+     text-align: center;
+     text-decoration: none;
+     display: inline-block;
+     font-size: 16px;
+     border-radius: 8px;
+   }
   </style>
   <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 </head>
@@ -46,7 +57,7 @@
      <li id ="{{ item[1] }}">
          <ul class="hr">
          <li>{{ item[0] }}</li>
-         <li><button value="{{ item[1] }}" >Закінчити діалог</button></li>
+         <li><button id = "del_btn"value="{{ item[1] }}" >Закінчити діалог</button></li>
          </ul>
      </li>
      {% endfor %}
