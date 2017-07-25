@@ -102,15 +102,16 @@ def webhook():
                        if (messaging_event["message"]["quick_reply"]["payload"] == "operator"):
                         params = {"fields":"first_name,last_name","access_token":os.environ["PAGE_ACCESS_TOKEN"]}
                         r = requests.get("https://graph.facebook.com/v2.6/"+messaging_event["sender"]["id"],params = params)
-                        print(r.url)
-                        data = json.loads(r.text)
-                        print(data["first_name"])
-                        users.append([r.content["first_name"]+" "+r.content["last_name"],messaging_event["sender"]["id"]])
-                        print(users)
-                        #here
                         if r.status_code != 200:
                          log(r.status_code)
                          log(r.text)
+                         return "ok", 200
+                        data = json.loads(r.text)
+                        print(data["first_name"])
+                        users.append([data["first_name"]+" "+data["last_name"],messaging_event["sender"]["id"]])
+                        print(users)
+                        #here
+
                        else:
                         code = messaging_event["message"]["quick_reply"]["payload"]
                         print(code)
