@@ -142,6 +142,10 @@ def usersdel():
  print(request.get_data())
  data = utils.generate_operator_end(request.get_data())
  send_message(request.get_data(),data)
+ for item in users:
+  if item[1] == request.get_data():
+   users.remove(item)
+ print(users)
  return render_template("hello.html")
 
 
