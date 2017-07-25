@@ -13,10 +13,14 @@
     margin-right: 5px; /* Отступ слева */
     padding: 3px; /* Поля вокруг текста */
    }
+   #main {
+     background-color: #FBF4E8;
+   }
   </style>
   <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 </head>
 <body>
+  <div id = "main">
   {% if users %}
    <ul>
     {% for item in users %}
@@ -42,6 +46,6 @@ $( "button" ).click(function() {
 });
 
 </script>
-
+</div>
 </body>
 </html>
