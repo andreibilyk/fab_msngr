@@ -34,8 +34,7 @@
 {% endif %}
 <script>
 $( "button" ).click(function() {
-  $( this ).slideUp();
-  alert($( this ).attr("value"))
+  $( this ).parent().slideUp();
   $.ajax({
   type: "POST",
   data: $(this).attr("value"),
