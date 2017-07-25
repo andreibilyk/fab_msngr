@@ -136,6 +136,14 @@ def webhook():
 
     return "ok", 200
 
+@app.route('/usersdel',methods=['GET', 'POST'])
+def usersdel():
+ print("Heyyy")
+ print(request.get_data())
+ data = utils.generate_operator_end(request.get_data())
+ send_message(request.get_data(),data)
+ return render_template("hello.html")
+
 
 def send_message(recipient_id, data_to_send):
 
@@ -156,12 +164,6 @@ def log(message):  # simple wrapper for logging to stdout on heroku
     sys.stdout.flush()
 
 
-@app.route('/usersdel',methods=['GET', 'POST'])
-def usersdel():
- print("Heyyy")
- print(request.get_data())
- print(request.get_json())
- return render_template("hello.html")
 
 if __name__ == '__main__':
     app.run(debug=True)

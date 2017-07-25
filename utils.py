@@ -277,3 +277,41 @@ def generate_answer(answer,recipient_id):
       },
     ]
  return data
+
+def generate_operator_end(recipient_id):
+ data = {
+        "recipient": {
+            "id": recipient_id
+        },
+        "message": {
+            "text": "Дякуємо, що використовуєте сервіс Pravovyk! Будь ласка, оцініть консультацію! Ваша оцінка дуже важна для нас, адже ми розвиваєіо наш сервіс кожного дня!"
+        }
+    }
+ data["message"]["quick_replies"] = [
+      {
+        "content_type":"text",
+        "title":"Оцінити консультацію",
+        "payload":"operator_stars"
+      },
+      {
+        "content_type":"text",
+        "title":"Перелік сфер",
+        "payload":"0"
+      },
+    ]
+ return data
+
+def generate_file(file_url,recipient_id):
+  data = {
+  "recipient":{
+    "id":recipient_id
+  },
+  "message":{
+    "attachment":{
+      "type":"file",
+      "payload":{
+        "url":file_url
+      }
+    }
+  }
+}
