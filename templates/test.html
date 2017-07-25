@@ -23,7 +23,7 @@
   <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 </head>
 <body>
-  <img src="{{ url_for('images', filename='logo.png') }}">
+  <img src="{{ url_for('static', filename='logo.png') }}">
   <div id = "main">
   {% if users %}
    <ul>
