@@ -33,7 +33,7 @@
       text-align: center;
       color:#474848;
    }
-   button{
+   .button{
      background-color: #4CAF50; /* Green */
      border: none;
      color: white;
@@ -44,7 +44,7 @@
      font-size: 16px;
      border-radius: 8px;
    }
-   button:hover {
+   .button:hover {
     background-color: #8addfd; /* Green */
     color: white;
  }
@@ -61,7 +61,7 @@
      <li id ="{{ item[1] }}">
          <ul class="hr">
          <li>{{ item[0] }}</li>
-         <li><button value="{{ item[1] }}" >Закінчити діалог</button></li>
+         <li><button class = "button" value="{{ item[1] }}" >Закінчити діалог</button></li>
          </ul>
      </li>
      {% endfor %}
