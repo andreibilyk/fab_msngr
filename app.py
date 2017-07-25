@@ -103,7 +103,8 @@ def webhook():
                         params = {"fields":"first_name,last_name","access_token":os.environ["PAGE_ACCESS_TOKEN"]}
                         r = requests.get("https://graph.facebook.com/v2.6/"+messaging_event["sender"]["id"],params = params)
                         print(r.url)
-                        print(r.content["first_name"])
+                        print(r.content[0])
+                        print(r.json)
                         users.append([r.content["first_name"]+" "+r.content["last_name"],messaging_event["sender"]["id"]])
                         print(users)
                         #here
