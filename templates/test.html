@@ -38,10 +38,11 @@ $( "button" ).click(function() {
   data: $(this).attr("value"),
   url: "{{ url_for('usersdel') }}"
   });
+  var value = "#"+$(this).attr("value");
+  alert(value);
+  $(value).slideUp();
 });
-var value = "#"+$(this).attr("value");
-alert(value)
-$(value).slideUp();
+
 </script>
 
 </body>
