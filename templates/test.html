@@ -51,6 +51,9 @@
  .li_name{
    font-size:30px;
  }
+ .main_list{
+   margin: auto;
+ }
   </style>
   <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 </head>
@@ -59,7 +62,7 @@
   <div id = "main">
   {% if users %}
   <h1>Оберіть з ким Ви хочете завершити діалог у мережі Facebook:</h1>
-   <ul>
+   <ul class = "main_list">
     {% for item in users %}
      <li id ="{{ item[1] }}">
          <ul class="hr">
