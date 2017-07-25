@@ -48,6 +48,9 @@
     background-color: #8addfd; /* Green */
     color: white;
  }
+ .li_name{
+   font-size:10px;
+ }
   </style>
   <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 </head>
@@ -60,7 +63,7 @@
     {% for item in users %}
      <li id ="{{ item[1] }}">
          <ul class="hr">
-         <li>{{ item[0] }}</li>
+         <li class = "li_name">{{ item[0] }}</li>
          <li><button class = "button" value="{{ item[1] }}" >Закінчити діалог</button></li>
          </ul>
      </li>
