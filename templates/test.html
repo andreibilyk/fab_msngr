@@ -24,7 +24,7 @@
      <li>
          <ul class="hr">
          <li>{{ item[0] }}</li>
-         <li><button value="{{ item[1] }}" >Кнопка 1</button></li>
+         <li><button value="{{ item[1] }}" >Закінчити діалог</button></li>
          </ul>
      </li>
      {% endfor %}
@@ -36,6 +36,11 @@
 $( "button" ).click(function() {
   $( this ).slideUp();
   alert($( this ).attr("value"))
+  $.ajax({
+  type: "POST",
+  data: "id=" + $(this).attr("value"),
+  url: "{{ url_for('usersdel') }}"
+  });
 });
 </script>
 
