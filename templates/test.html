@@ -4,30 +4,37 @@
   <meta charset="utf-8">
   <title>click demo</title>
   <style>
-  p {
-    color: red;
-    margin: 5px;
-    cursor: pointer;
+  li {
+    list-style-type: none;
+    padding: 1%;
   }
-  p:hover {
-    background: yellow;
-  }
+   .hr li {
+    display: inline; /* Отображать как строчный элемент */
+    margin-right: 5px; /* Отступ слева */
+    padding: 3px; /* Поля вокруг текста */
+   }
   </style>
   <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 </head>
 <body>
-
-<p>First Paragraph</p>
-<p>Second Paragraph</p>
-<p>Yet one more Paragraph</p>
-<button>Click me</button>
+  {% if users %}
+   <ul>
+    {% for item in users %}
+     <li>
+         <ul class="hr">
+         <li>{{ item[0] }}</li>
+         <li><button type="submit" value="{{ item[1] }}" >Кнопка 1</button></li>
+         </ul>
+     </li>
+     {% endfor %}
+  </ul>
+ {% else %}
+<h1>Ви ні з ким не переписуєтесь!</h1>
+{% endif %}
 <script>
-$( "p" ).click(function() {
-  $( this ).slideUp();
-});
 $( "button" ).click(function() {
   $( this ).slideUp();
-  alert("Heyy Litty again!")
+  alert($( this ).attr("value"))
 });
 </script>
 
