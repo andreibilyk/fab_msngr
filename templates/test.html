@@ -1,10 +1,31 @@
 <!doctype html>
-<title>Hello from Flask</title>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>click demo</title>
+  <style>
+  p {
+    color: red;
+    margin: 5px;
+    cursor: pointer;
+  }
+  p:hover {
+    background: yellow;
+  }
+  </style>
+  <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+</head>
+<body>
+
+<p>First Paragraph</p>
+<p>Second Paragraph</p>
+<p>Yet one more Paragraph</p>
+
 <script>
-  $(document).ready(function(){              // по окончанию загрузки страницы
-    $('#btn').click(function(){      // вешаем на клик по элементу с id = example-1
-        alert("touched");// загрузку HTML кода из файла example.html
-    })
+$( "p" ).click(function() {
+  $( this ).slideUp();
 });
 </script>
-<button type="button" id = "btn">Register </button>
+
+</body>
+</html>
