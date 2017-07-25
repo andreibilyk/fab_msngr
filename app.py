@@ -106,6 +106,7 @@ def webhook():
                         print(r.content)
                         users.append([r.content["first_name"]+" "+r.content["last_name"],messaging_event["sender"]["id"]])
                         print(users)
+                        #here
                         if r.status_code != 200:
                          log(r.status_code)
                          log(r.text)
