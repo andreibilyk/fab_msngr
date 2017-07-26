@@ -113,6 +113,8 @@ def webhook():
                    print(str(e))
                  elif ((messaging_event["postback"]["payload"])[0] == "s"):
                   print(datetime.datetime.fromtimestamp(messaging_event["timestamp"]/1000.0))
+                  print(datetime.now(),)
+                  print(datetime.now)
                   print(str(int((messaging_event["postback"]["payload"])[4:])+1)+"   "+str(messaging_event["sender"]["id"])+"  "+ str(messaging_event["timestamp"]))
                   #db_worker.add_rank(str(int((messaging_event["postback"]["payload"])[4:])+1),messaging_event["sender"]["id"],messaging_event["timestamp"])
                   print("OK")
