@@ -89,7 +89,7 @@ def verify():
 
 @app.route('/ranks', methods=['GET'])
 def ranks():
- print(db_worker.get_rank())
+ print(db_worker.get_rank)
 
 
 
