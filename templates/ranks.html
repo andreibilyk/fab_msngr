@@ -54,6 +54,33 @@
  .main_list{
    display: block; text-align:center;
  }
+ .hide-replaced.ws-inputreplace {
+     display: none !important;
+ }
+ .input-picker .picker-list td > button.othermonth {
+     color: #888888;
+     background: #fff;
+ }
+ .ws-inline-picker.ws-size-2, .ws-inline-picker.ws-size-4 {
+     width: 49.6154em;
+ }
+ .ws-size-4 .ws-index-0, .ws-size-4 .ws-index-1 {
+     border-bottom: 0.07692em solid #eee;
+     padding-bottom: 1em;
+     margin-bottom: 0.5em;
+ }
+ .picker-list.ws-index-2, .picker-list.ws-index-3 {
+     margin-top: 3.5em;
+ }
+ div.ws-invalid input {
+     border-color: #c88;
+ }
+ .ws-invalid label {
+     color: #933;
+ }
+ div.ws-success input {
+     border-color: #8c8;
+ }
   </style>
   <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 </head>
@@ -61,6 +88,15 @@
   <img class = "logo" src="{{ url_for('static', filename='logo.png') }}">
   <div id = "main">
   {% if ranks %}
+  <h2>1 Calendars without visible input</h2>
+
+  <div class="form-row">
+      <input type="date" class="hide-replaced" />
+  </div>
+  <div class="form-row">
+      <input type="submit" />
+  </div>
+  </form>
   <h1>Оцінки операторів</h1>
    <ul class = "main_list">
     {% for item in ranks %}
