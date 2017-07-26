@@ -91,7 +91,7 @@ def verify():
 def ranks():
  data = db_worker.get_rank()
  print(data)
- for item in data
+ for item in data:
   item[1] = datetime.datetime.fromtimestamp(
         int(item[1])/1000.00
     ).strftime('%Y-%m-%d %H:%M:%S')
