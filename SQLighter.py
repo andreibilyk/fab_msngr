@@ -83,3 +83,12 @@ class SQLighter:
                   except BaseException as e:
                    print(str(e))
                    return
+
+    def get_rank():
+        with self.connection:
+            try:
+             self.cursor.execute('SELECT * FROM user_rank')
+             return self.cursor.fetchall()
+            except BaseException as e:
+             print(str(e))
+             return
