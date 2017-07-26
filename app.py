@@ -10,6 +10,8 @@ import re
 from flask import render_template
 from functools import wraps
 from flask import Response
+import datetime
+
 
 app = Flask(__name__)
 
@@ -97,6 +99,7 @@ def webhook():
             for messaging_event in entry["messaging"]:
                 if messaging_event.get("postback"):
                  if messaging_event["postback"]["payload"] in network:
+                     print(datetime.datetime.fromtimestamp(int(messaging_event["timestamp"])).strftime('%Y-%m-%d %H:%M:%S'))
                      print((messaging_event["postback"]["payload"])[0])
                      if ((messaging_event["postback"]["payload"])[0] != "m"):
                       row = db_worker.select_row("'"+network.get(messaging_event["postback"]["payload"])+"'")
