@@ -95,7 +95,7 @@ def ranks():
        int(item[1])/1000.00
    ).strftime('%Y-%m-%d %H:%M:%S'), item[2],item[3]) for item in data]
  print(new_data)
- return "Hello world", 200
+ return render_template('ranks.html', ranks=new_data)
 
 
 
