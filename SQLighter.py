@@ -78,7 +78,7 @@ class SQLighter:
     def add_rank(self,rank,recipient_id,time_user):
               with self.connection:
                   try:
-                   self.cursor.execute('INSERT INTO user_rank (id,time,rank,user_id) VALUES (1,%s,%s,%s)' % ("'"+str(time_user)+"'","'"+str(rank)+"'","'"+str(recipient_id)+"'"))
+                   self.cursor.execute('INSERT INTO user_rank (time,rank,user_id) VALUES (%s,%s,%s)' % ("'"+str(time_user)+"'","'"+str(rank)+"'","'"+str(recipient_id)+"'"))
                    self.connection.commit()
                   except BaseException as e:
                    print(str(e))
