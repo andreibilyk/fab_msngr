@@ -85,6 +85,19 @@
   <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 </head>
 <body>
+  <script>
+  replaceUI: 'auto',
+   types: 'date',
+   date: {
+       startView: 2,
+       inlinePicker: true,
+       classes: 'hide-inputbtns'
+   }
+});
+webshim.setOptions('forms', {
+   lazyCustomMessages: true
+});
+  </script>
   <img class = "logo" src="{{ url_for('static', filename='logo.png') }}">
   <div id = "main">
   {% if ranks %}
