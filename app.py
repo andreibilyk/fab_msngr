@@ -89,7 +89,12 @@ def verify():
 
 @app.route('/ranks', methods=['GET'])
 def ranks():
- print(db_worker.get_rank())
+ data = db_worker.get_rank()
+ for item in data
+  item[1] = datetime.datetime.fromtimestamp(
+        int(item[1])/1000.00
+    ).strftime('%Y-%m-%d %H:%M:%S')
+  print(item[1])
  return "Hello world", 200
 
 
