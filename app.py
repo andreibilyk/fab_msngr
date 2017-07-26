@@ -112,8 +112,9 @@ def webhook():
                   except BaseException as e :
                    print(str(e))
                  elif ((messaging_event["postback"]["payload"])[0] == "s"):
+                  print(datetime.datetime.fromtimestamp(messaging_event["timestamp"]))
                   print(str(int((messaging_event["postback"]["payload"])[4:])+1)+"   "+str(messaging_event["sender"]["id"])+"  "+ str(messaging_event["timestamp"]))
-                  db_worker.add_rank(str(int((messaging_event["postback"]["payload"])[4:])+1),messaging_event["sender"]["id"],messaging_event["timestamp"])
+                  #db_worker.add_rank(str(int((messaging_event["postback"]["payload"])[4:])+1),messaging_event["sender"]["id"],messaging_event["timestamp"])
                   print("OK")
                  else:
                     row = db_worker.select_row2("'"+messaging_event["postback"]["payload"].encode('utf-8')+"'")
