@@ -300,7 +300,7 @@ def generate_operator_end(recipient_id):
   data["message"]["attachment"]["payload"]["elements"].append(
                 {
                   "title":"Моя оцінка:"+str(x),
-                  "image_url":url_stars[x],
+                  "image_url":"https://enigmatic-mesa-89892.herokuapp.com/"+url_stars[x],
                   "buttons":[{
                                 "type":"postback",
                               "title":"Обрати оцінку",
