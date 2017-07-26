@@ -8,6 +8,7 @@ urls = {
   "Право споживача🍞💇🏼‍♂️":"https://andreibilyk.com/consumer.jpg",
   "Поліція👮🏼🚨":"https://andreibilyk.com/policia.jpg"
             }
+url_stars = ["/static/1star.png","/static/2stars.png","/static/3stars.png"]
 
 def generate_markup(answers,callback,recipient_id,headline):
     """
@@ -279,26 +280,35 @@ def generate_answer(answer,recipient_id):
  return data
 
 def generate_operator_end(recipient_id):
- data = {
-        "recipient": {
-            "id": recipient_id
-        },
-        "message": {
-            "text": "Дякуємо, що використовуєте сервіс Pravovyk! Будь ласка, оцініть консультацію! Ваша оцінка дуже важлива для нас, адже ми покращуємо наш сервіс кожного дня!"
-        }
-    }
- data["message"]["quick_replies"] = [
-      {
-        "content_type":"text",
-        "title":"Оцінити консультацію",
-        "payload":"operator_stars"
-      },
-      {
-        "content_type":"text",
-        "title":"Перелік сфер",
-        "payload":"0"
-      },
-    ]
+    data = {
+    "recipient": {
+    "id":recipient_id
+    },
+    "message":{
+    "attachment":{
+    "type":"template",
+    "payload":{
+    "template_type":"generic",
+    "elements":[
+
+            ]
+            }
+            }
+            }
+            }
+ for x in range(0, 3):
+  data["message"]["attachment"]["payload"]["elements"].append(
+                {
+                  "title":"Моя оцінка:"+str(x),
+                  "image_url":url_stars[x],
+                  "buttons":[{
+                                "type":"postback",
+                              "title":"Обрати оцінку",
+                              "payload":"star"+str(x)
+                                                }
+                                              ]
+                                            }
+                )
  return data
 
 def generate_file(file_url,recipient_id):
