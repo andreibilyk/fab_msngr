@@ -9,7 +9,7 @@ urls = {
   "Поліція👮🏼🚨":"https://andreibilyk.com/policia.jpg"
             }
 url_stars = ["/static/1star.png","/static/2stars.png","/static/3stars.png"]
-
+stars = ["Одна зірка🌟","Дві зірки🌟🌟","Три зірки🌟🌟🌟"]
 def generate_markup(answers,callback,recipient_id,headline):
     """
     Создаем кастомную клавиатуру для выбора ответа
@@ -299,7 +299,7 @@ def generate_operator_end(recipient_id):
  for x in range(0, 3):
   data["message"]["attachment"]["payload"]["elements"].append(
                 {
-                  "title":"Моя оцінка:"+str(x),
+                  "title":stars[x],
                   "image_url":"https://enigmatic-mesa-89892.herokuapp.com/"+url_stars[x],
                   "buttons":[{
                                 "type":"postback",
