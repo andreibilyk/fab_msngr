@@ -84,7 +84,7 @@ class SQLighter:
                    print(str(e))
                    return
 
-    def get_rank():
+    def get_rank(self):
         with self.connection:
             try:
              self.cursor.execute('SELECT * FROM user_rank')
