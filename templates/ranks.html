@@ -85,19 +85,6 @@
   <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 </head>
 <body>
-  <script>
-  replaceUI: 'auto',
-   types: 'date',
-   date: {
-       startView: 2,
-       inlinePicker: true,
-       classes: 'hide-inputbtns'
-   }
-});
-webshim.setOptions('forms', {
-   lazyCustomMessages: true
-});
-  </script>
   <img class = "logo" src="{{ url_for('static', filename='logo.png') }}">
   <div id = "main">
   {% if ranks %}
@@ -111,6 +98,19 @@ webshim.setOptions('forms', {
       <input type="submit" />
   </div>
   </form>
+  <script>
+  replaceUI: 'auto',
+   types: 'date',
+   date: {
+       startView: 2,
+       inlinePicker: true,
+       classes: 'hide-inputbtns'
+   }
+});
+webshim.setOptions('forms', {
+   lazyCustomMessages: true
+});
+  </script>
   <h1>Оцінки операторів</h1>
    <ul class = "main_list">
     {% for item in ranks %}
