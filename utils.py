@@ -296,7 +296,7 @@ def generate_operator_end(recipient_id):
              }
              }
              }
- for x in range(2,-1):
+ for x in range(0, 3):
   data["message"]["attachment"]["payload"]["elements"].append(
                 {
                   "title":stars[x],
