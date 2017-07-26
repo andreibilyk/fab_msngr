@@ -105,19 +105,22 @@ def webhook():
                       row = db_worker.select_row("'"+network.get(messaging_event["postback"]["payload"])+"'")
                       data = utils.generate_markup(row[2],messaging_event["postback"]["payload"],messaging_event["sender"]["id"],network.get(messaging_event["postback"]["payload"]))
                       send_message(messaging_event["sender"]["id"], data)
+                 elif ((messaging_event["postback"]["payload"])[0] == "m"):
+                  try:
+                   row = db_worker.select_row("'"+network.get((messaging_event["postback"]["payload"])[4:])+"'")
+                   data = utils.generate_markup_more(row[2],(messaging_event["postback"]["payload"])[4:],messaging_event["sender"]["id"])
+                   send_message(messaging_event["sender"]["id"], data)
+                  except BaseException as e :
+                   print(str(e))
+                 elif ((messaging_event["postback"]["payload"])[0] == "s"):
+                  print(messaging_event["postback"]["payload"])[4:])
                  else:
-                  if ((messaging_event["postback"]["payload"])[0] == "m"):
-                   try:
-                    row = db_worker.select_row("'"+network.get((messaging_event["postback"]["payload"])[4:])+"'")
-                    data = utils.generate_markup_more(row[2],(messaging_event["postback"]["payload"])[4:],messaging_event["sender"]["id"])
-                    send_message(messaging_event["sender"]["id"], data)
-                   except BaseException as e :
-                    print(str(e))
-                  else:
                     row = db_worker.select_row2("'"+messaging_event["postback"]["payload"].encode('utf-8')+"'")
                     answer = row[1]
                     answer = re.sub('<b>', '', answer)
                     answer = re.sub('</b>', '', answer)
+                    answer = re.sub('<i>', '', answer)
+                    answer = re.sub('</i>', '', answer)
                     data = utils.generate_answer(answer,messaging_event["sender"]["id"])
                     send_message(messaging_event["sender"]["id"], data)
                 if messaging_event.get("message"):  # someone sent us a message
