@@ -280,22 +280,22 @@ def generate_answer(answer,recipient_id):
  return data
 
 def generate_operator_end(recipient_id):
-    data = {
-    "recipient": {
-    "id":recipient_id
-    },
-    "message":{
-    "attachment":{
-    "type":"template",
-    "payload":{
-    "template_type":"generic",
-    "elements":[
+ data = {
+     "recipient": {
+     "id":recipient_id
+     },
+     "message":{
+     "attachment":{
+     "type":"template",
+     "payload":{
+     "template_type":"generic",
+     "elements":[
 
-            ]
-            }
-            }
-            }
-            }
+             ]
+             }
+             }
+             }
+             }
  for x in range(0, 3):
   data["message"]["attachment"]["payload"]["elements"].append(
                 {
