@@ -87,7 +87,7 @@ def verify():
     #return "Hello world", 200
     return render_template('test.html', users=users)
 
-@app.route('/ranks', methods=['GET']):
+@app.route('/ranks', methods=['GET'])
 def ranks():
  print(db_worker.get_rank())
 
