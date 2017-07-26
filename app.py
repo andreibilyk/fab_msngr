@@ -113,7 +113,7 @@ def webhook():
                   except BaseException as e :
                    print(str(e))
                  elif ((messaging_event["postback"]["payload"])[0] == "s"):
-                  print(messaging_event["postback"]["payload"])[4:])
+                  print ((messaging_event["postback"]["payload"])[4:])
                  else:
                     row = db_worker.select_row2("'"+messaging_event["postback"]["payload"].encode('utf-8')+"'")
                     answer = row[1]
